@@ -27,10 +27,24 @@ const TextType = ({
   const [isDeleting, setIsDeleting] = useState(false);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(!startOnVisible);
+  const [hasAnimated, setHasAnimated] = useState(false);
   const cursorRef = useRef(null);
   const containerRef = useRef(null);
 
   const textArray = useMemo(() => (Array.isArray(text) ? text : [text]), [text]);
+
+  // Check if component has animated before using sessionStorage
+  useEffect(() => {
+    const hasAnimatedBefore = sessionStorage.getItem('textTypeHasAnimated');
+    if (hasAnimatedBefore) {
+      setHasAnimated(true);
+      // Set to full text immediately if already animated
+      const currentText = textArray[currentTextIndex];
+      const processedText = reverseMode ? currentText.split('').reverse().join('') : currentText;
+      setDisplayedText(processedText);
+      setCurrentCharIndex(processedText.length);
+    }
+  }, [textArray, currentTextIndex, reverseMode]);
 
   const getRandomSpeed = useCallback(() => {
     if (!variableSpeed) return typingSpeed;
@@ -56,32 +70,32 @@ const TextType = ({
     return () => observer.disconnect();
   }, [startOnVisible]);
 
-useEffect(() => {
-  if (showCursor && cursorRef.current) {
-    const tween = gsap.to(cursorRef.current, {
-      opacity: 0,
-      duration: cursorBlinkDuration,
-      repeat: -1,
-      yoyo: true,
-      ease: 'power2.inOut'
-    });
+  useEffect(() => {
+    if (showCursor && cursorRef.current) {
+      const tween = gsap.to(cursorRef.current, {
+        opacity: 0,
+        duration: cursorBlinkDuration,
+        repeat: -1,
+        yoyo: true,
+        ease: 'power2.inOut'
+      });
 
-    // stop blinking when typing is done
-    if (
-      currentCharIndex === textArray[currentTextIndex].length && 
-      !isDeleting
-    ) {
-      tween.kill();
-      gsap.set(cursorRef.current, { opacity: 0 }); // hide cursor
+      // stop blinking when typing is done
+      if (
+        currentCharIndex === textArray[currentTextIndex].length && 
+        !isDeleting
+      ) {
+        tween.kill();
+        gsap.set(cursorRef.current, { opacity: 0 }); // hide cursor
+      }
+
+      return () => tween.kill();
     }
-
-    return () => tween.kill();
-  }
-}, [showCursor, cursorBlinkDuration, currentCharIndex, isDeleting, textArray, currentTextIndex]);
-
+  }, [showCursor, cursorBlinkDuration, currentCharIndex, isDeleting, textArray, currentTextIndex]);
 
   useEffect(() => {
-    if (!isVisible) return;
+    // Don't animate if we've already animated before
+    if (!isVisible || hasAnimated) return;
 
     let timeout;
 
@@ -93,6 +107,8 @@ useEffect(() => {
         if (displayedText === '') {
           setIsDeleting(false);
           if (currentTextIndex === textArray.length - 1 && !loop) {
+            // Mark as animated when done
+            sessionStorage.setItem('textTypeHasAnimated', 'true');
             return;
           }
 
@@ -121,6 +137,9 @@ useEffect(() => {
           timeout = setTimeout(() => {
             setIsDeleting(true);
           }, pauseDuration);
+        } else {
+          // Mark as animated when done for single text
+          sessionStorage.setItem('textTypeHasAnimated', 'true');
         }
       }
     };
@@ -132,7 +151,6 @@ useEffect(() => {
     }
 
     return () => clearTimeout(timeout);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     currentCharIndex,
     displayedText,
@@ -147,7 +165,8 @@ useEffect(() => {
     isVisible,
     reverseMode,
     variableSpeed,
-    onSentenceComplete
+    onSentenceComplete,
+    hasAnimated // Added dependency
   ]);
 
   const shouldHideCursor =

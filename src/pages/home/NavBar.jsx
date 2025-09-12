@@ -83,7 +83,7 @@ function DockLabel({ children, className = "", ...rest }) {
           animate={{ opacity: 1, y: -10 }}
           exit={{ opacity: 0, y: 0 }}
           transition={{ duration: 0.2 }}
-          className={`${className} absolute -top-6 left-1/2 w-fit whitespace-pre rounded-full border dark:border-neutral-700 dark:bg-gradient-to-br from-neutral-700 to-neutral-900 dark:from-neutral-600 dark:to-neutral-900 border-neutral-300 select-none px-2 py-0.5 text-xs text-neutral-900 dark:text-white`}
+          className={`${className} absolute -top-6 left-1/2 w-fit whitespace-pre rounded-full border dark:border-neutral-700 dark:bg-gradient-to-br from-neutral-700 to-neutral-900 dark:from-neutral-600 dark:to-neutral-900 backdrop-blur-xl saturate-100 bg-neutral-100/70 border-neutral-300 select-none px-2 py-0.5 text-xs text-neutral-900 dark:text-white`}
           role="tooltip"
           style={{ x: "-50%" }}
         >

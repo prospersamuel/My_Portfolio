@@ -9,10 +9,10 @@ const techLogos = [
   { node: <SiNextdotjs />, title: "Next.js", href: "https://nextjs.org" },
   { node: <SiTypescript />, title: "TypeScript", href: "https://www.typescriptlang.org" },
   { node: <SiTailwindcss />, title: "Tailwind CSS", href: "https://tailwindcss.com" },
-  { node: <SiFlutter />, title: "Flutter", href: "https://flutter.com" },
-  { node: <SiAdobephotoshop />, title: "Adobe Photoshop", href: "https://flutter.com" },
-  { node: <SiCoreldraw />, title: "Coreldraw", href: "https://flutter.com" },
-  { node: <SiNodedotjs />, title: "Node.js", href: "https://flutter.com" },
+  { node: <SiFlutter />, title: "Flutter", href: "https://flutter.dev" },
+  { node: <SiAdobephotoshop />, title: "Adobe Photoshop", href: "https://adobe.com/" },
+  { node: <SiCoreldraw />, title: "Coreldraw", href: "https://oreldraw.com" },
+  { node: <SiNodedotjs />, title: "Node.js", href: "https://nodejs.org" },
 ];
 
 
@@ -20,7 +20,13 @@ const techLogos = [
     <div className="relative">
       <Hero/>
 
-    <div className='relative mt-10 overflow-hidden'>
+    <div className='relative w-[85%] m-auto mt-10 overflow-hidden'>
+      <h2 className="text-2xl md:text-3xl font-bold text-center text-neutral-800 dark:text-neutral-200 mb-3">
+            Technologies I Work With
+          </h2>
+          <p className="text-neutral-600 dark:text-neutral-400 text-center max-w-2xl mx-auto mb-10">
+            These are the tools and technologies I use to bring ideas to life
+          </p>
       <LogoLoop
         logos={techLogos}
         speed={50}

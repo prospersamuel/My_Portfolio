@@ -6,7 +6,7 @@ import AnimatedGrid from "./pages/home/AnimatedGrid";
 
 function App() {
   return (
-    <div className="dark:bg-[radial-gradient(circle,_var(--tw-gradient-stops))] from-neutral-100 to-neutral-200 dark:from-neutral-900 dark:to-neutral-950 bg-neutral-50 min-h-screen transition-colors duration-300">
+    <div className="dark:bg-[radial-gradient(ellipse,_var(--tw-gradient-stops))] dark:from-[#212121]  dark:to-neutral-950 dark:text-neutral-200 bg-neutral-50 min-h-screen transition-colors duration-300">
       <AnimatedGrid />
       <Routes>
         <Route path="/" element={<Home />} />
