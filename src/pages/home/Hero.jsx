@@ -2,7 +2,7 @@ import { Facebook, Github, Instagram, Linkedin, Twitter } from "lucide-react";
 import AnimatedGrid from "./AnimatedGrid";
 import BlurText from "../../components/BlurText";
 import TextType from "../../components/TextType";
-import me from "../../assets/mec.png";
+import me from "../../assets/mee.png";
 
 export function Hero() {
   return (
@@ -30,18 +30,16 @@ export function Hero() {
           </div>
 
           <div className="flex flex-row gap-4 justify-center lg:justify-start">
-            <a
-              href="/profile"
+            <button
               className="px-6 py-3 rounded-lg bg-gradient-to-br from-neutral-700 to-neutral-900 dark:from-neutral-600 dark:to-neutral-900 text-white font-medium shadow-md hover:scale-110 transition-all duration-300 text-center"
             >
               Contact Me
-            </a>
-            <a
-              href="#projects"
+            </button>
+            <button
               className="px-6 py-3 rounded-lg border border-neutral-300 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 font-medium hover:scale-110 transition-all duration-300 text-center"
             >
               View Profile
-            </a>
+            </button>
           </div>
 
           {/* Social Links */}
@@ -119,10 +117,10 @@ export function Hero() {
                 Node.js
               </span>
               <span className="px-3 py-1 rounded-full text-xs text-neutral-200 bg-gradient-to-br from-neutral-700 to-neutral-900 dark:from-neutral-600 dark:to-neutral-900 dark:text-neutral-300">
-                TypeScript
+                Python
               </span>
               <span className="px-3 py-1 rounded-full text-xs bg-gradient-to-br from-neutral-700 to-neutral-900 dark:from-neutral-600 dark:to-neutral-900 text-neutral-200 dark:text-neutral-300">
-                Next.js
+                Flutter
               </span>
             </div>
 

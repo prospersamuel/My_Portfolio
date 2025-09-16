@@ -3,11 +3,20 @@ import Home from "./pages/home/Home";
 import Profile from "./pages/home/Profile";
 import Layout from "./pages/Layout";
 import AnimatedGrid from "./pages/home/AnimatedGrid";
+import ClickSpark from "./components/ClickSpark";
 
 function App() {
   return (
+<ClickSpark
+  sparkColor='#fff'
+  sparkSize={10}
+  sparkRadius={15}
+  sparkCount={8}
+  duration={400}
+>
     <div className="dark:bg-[radial-gradient(ellipse,_var(--tw-gradient-stops))] dark:from-[#212121]  dark:to-neutral-950 dark:text-neutral-200 bg-neutral-50 min-h-screen transition-colors duration-300">
       <AnimatedGrid />
+  {/* Your content here */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="profile" element={<Profile />} />
@@ -15,6 +24,7 @@ function App() {
       </Routes>
       <Layout/>
     </div>
+</ClickSpark>
   );
 }
 
