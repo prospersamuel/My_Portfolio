@@ -3,6 +3,7 @@ import Navbar from "./home/NavBar";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useApp } from "../context/Appcontext";
 import { useEffect, useState } from "react";
+import Footer from "./home/Footer";
 
 export default function Layout() {
   const { toggleTheme, theme } = useApp();
@@ -48,6 +49,7 @@ export default function Layout() {
   return (
     <div>
       <Outlet />
+      <Footer/>
       <Navbar
         items={items}
         panelHeight={58}

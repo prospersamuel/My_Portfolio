@@ -136,7 +136,7 @@ export const PortfolioOverview = () => {
                 <div className="space-y-8">
                   <div className="pb-8 border-b border-neutral-200 dark:border-neutral-700">
                     <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                      <Code2 className="w-5 h-5 text-neutral-600" />
+                      <Code2 className="w-5 h-5 text-neutral-600 " />
                       Clean Frontend Development
                     </h3>
                     <p className="text-neutral-600 dark:text-neutral-400">
@@ -345,38 +345,6 @@ export const PortfolioOverview = () => {
         </div>
 
 <div className='h-px w-full mt-32 bg-gradient-to-r from-transparent via-neutral-400 to-transparent dark:via-neutral-700'></div>
-
-        {/* Footer Links */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-10">
-          <div>
-            <h4 className="font-semibold mb-4">Portfolio</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="/projects">Projects</a>
-              </li>
-              <li>
-                <a href="/about">About Me</a>
-              </li>
-              <li>
-                <a href="/contact">Contact</a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-4">Connect</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="https://github.com/">GitHub</a>
-              </li>
-              <li>
-                <a href="https://linkedin.com/">LinkedIn</a>
-              </li>
-              <li>
-                <a href="https://twitter.com/">Twitter</a>
-              </li>
-            </ul>
-          </div>
-        </div>
       </div>
     </section>
   );
