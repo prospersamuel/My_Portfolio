@@ -1,8 +1,9 @@
 import { Facebook, Github, Instagram, Linkedin, Twitter } from "lucide-react";
-import AnimatedGrid from "./AnimatedGrid";
+import AnimatedGrid from "../Layout/AnimatedGrid";
 import BlurText from "../../components/BlurText";
 import TextType from "../../components/TextType";
 import me from "../../assets/mee.png";
+import CountUp from "../../components/Countup";
 
 export function Hero() {
   return (
@@ -19,7 +20,6 @@ export function Hero() {
               direction="top"
               className="text-4xl md:text-5xl lg:text-6xl text-center font-bold dark:text-neutral-200 text-neutral-800 leading-tight"
             />
-            {/* <h1 className="text-4xl md:text-5xl lg:text-6xl text-center font-bold dark:text-neutral-200 text-neutral-800 leading-tight">Hi, I'm Prosper</h1> */}
             <TextType
               text={
                 "A full-stack developer passionate about building clean, modern and responsive web experiences and mobile applications."
@@ -96,7 +96,7 @@ export function Hero() {
         </div>
 
         {/* Right Side - Image Container */}
-        <div className="dark:bg-neutral-900/70 bg-neutral-100/80 backdrop-blur-sm border-2 border-neutral-300 dark:border-neutral-700 rounded-2xl p-6 shadow-lg max-w-md w-full order-1 lg:order-2 overflow-hidden">
+        <div className="dark:bg-neutral-900/70 bg-neutral-100/5 backdrop-blur-sm border-2 border-neutral-300 dark:border-neutral-700 rounded-2xl p-6 shadow-md max-w-md w-full order-1 lg:order-2 overflow-hidden">
           <div className="flex flex-col items-center space-y-5">
             {/* Image placeholder with gradient */}
             <div className="w-48 h-48 md:w-56 md:h-56 rounded-full bg-gradient-to-br from-neutral-700 to-neutral-900 dark:from-neutral-600 dark:to-neutral-900 overflow-hidden border-4 border-neutral-300 dark:border-neutral-700 shadow-lg">
@@ -127,25 +127,31 @@ export function Hero() {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4 w-full pt-4">
               <div className="text-center">
-                <div className="text-2xl font-bold text-neutral-900 dark:text-neutral-200">
-                  12+
-                </div>
+<CountUp
+  to={12}
+  duration={1}
+  className="text-2xl font-bold text-neutral-900 dark:text-neutral-200"
+/>
                 <div className="text-xs text-neutral-600 dark:text-neutral-400">
                   Projects
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-neutral-900 dark:text-neutral-200">
-                  3+
-                </div>
+<CountUp
+  to={3}
+  duration={1}
+  className="text-2xl font-bold text-neutral-900 dark:text-neutral-200"
+/>
                 <div className="text-xs text-neutral-600 dark:text-neutral-400">
                   Years
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-neutral-900 dark:text-neutral-200">
-                  8+
-                </div>
+<CountUp
+  to={8}
+  duration={1}
+  className="text-2xl font-bold text-neutral-900 dark:text-neutral-200"
+/>
                 <div className="text-xs text-neutral-600 dark:text-neutral-400">
                   Clients
                 </div>

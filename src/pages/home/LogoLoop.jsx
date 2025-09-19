@@ -31,7 +31,6 @@ const useResizeObserver = (callback, elements, dependencies) => {
     return () => {
       observers.forEach(observer => observer?.disconnect());
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, dependencies);
 };
 
@@ -68,7 +67,6 @@ const useImageLoader = (seqRef, onLoad, dependencies) => {
         img.removeEventListener('error', handleImageLoad);
       });
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, dependencies);
 };
 

@@ -1,9 +1,10 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/home/Home";
-import Profile from "./pages/home/Profile";
-import Layout from "./pages/Layout";
-import AnimatedGrid from "./pages/home/AnimatedGrid";
+import Profile from "./pages/Profile/Profile";
+import Layout from "./pages/Layout/Layout";
+import AnimatedGrid from "./pages/Layout/AnimatedGrid";
 import ClickSpark from "./components/ClickSpark";
+import Project from "./pages/Project/Project";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="profile" element={<Profile />} />
+        <Route path="projects" element={<Project />} />
         <Route path="*" element={<div className="flex items-center justify-center h-screen text-neutral-700 dark:text-neutral-300">Not Found</div>}></Route>
       </Routes>
       <Layout/>

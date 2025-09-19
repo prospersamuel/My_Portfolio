@@ -1,9 +1,9 @@
 import { Code2, HomeIcon, Moon, Sun, User } from "lucide-react";
-import Navbar from "./home/NavBar";
+import Navbar from "./NavBar";
 import { Outlet, useNavigate } from "react-router-dom";
-import { useApp } from "../context/Appcontext";
+import { useApp } from "../../context/Appcontext";
 import { useEffect, useState } from "react";
-import Footer from "./home/Footer";
+import Footer from "./Footer";
 
 export default function Layout() {
   const { toggleTheme, theme } = useApp();
@@ -18,12 +18,12 @@ export default function Layout() {
     {
       icon: <User size={18} />,
       label: "Profile",
-      onClick: () => navigate("profile"),
+      onClick: () => navigate("/profile"),
     },
     {
       icon: <Code2 size={18} />,
       label: "Projects",
-      onClick: () => alert("Archive!"),
+      onClick: () => navigate('/projects'),
     },
     {
       icon: theme === "dark" ? <Sun size={18} /> : <Moon size={18} />,
