@@ -14,22 +14,21 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold text-neutral-700 dark:text-neutral-200 mb-4 text-lg">Portfolio</h4>
             <ul className="space-y-3">
+              {
+                [
+                  {name: 'Profile', link: '/profile'},
+                  {name: 'Projects', link: '/projects'}
+                ].map((link)=>(
               <li>
                 <Link 
-                  to="/profile" 
+                  to={link.link} 
                   className="dark:hover:text-neutral-200 hover:text-neutral-900 transition-colors"
                 >
-                  <span>Profile</span>
+                  <span>{link.name}</span>
                 </Link>
               </li>
-              <li>
-                <Link 
-                  to="/projects" 
-                  className="dark:hover:text-neutral-200 hover:text-neutral-900 transition-colors"
-                >
-                  <span>Projects</span>
-                </Link>
-              </li>
+                ))
+              }
             </ul>
           </div>
 
@@ -37,6 +36,11 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold text-neutral-700 dark:text-neutral-200 mb-4 text-lg">Connect</h4>
             <ul className="space-y-3">
+              {/* {
+                [
+                  {name: 'Github', }
+                ]
+              } */}
               <li>
                 <a 
                   href="https://github.com/prospersamuel" 

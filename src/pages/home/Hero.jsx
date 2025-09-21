@@ -8,7 +8,6 @@ import CountUp from "../../components/Countup";
 export function Hero() {
   return (
     <section className="min-h-screen flex items-center justify-center px-6 py-16 relative overflow-hidden">
-
       <div className="w-full max-w-6xl flex flex-col lg:flex-row justify-center lg:gap-24 items-center">
         {/* Left Side */}
         <div className="space-y-6 order-2 lg:order-1 text-center lg:text-left">
@@ -30,14 +29,10 @@ export function Hero() {
           </div>
 
           <div className="flex flex-row gap-4 justify-center lg:justify-start">
-            <button
-              className="px-6 py-3 rounded-lg bg-gradient-to-br from-neutral-700 to-neutral-900 dark:from-neutral-600 dark:to-neutral-900 text-white font-medium shadow-md hover:scale-110 transition-all duration-300 text-center"
-            >
+            <button className="px-6 py-3 rounded-lg bg-gradient-to-br from-neutral-700 to-neutral-900 dark:from-neutral-600 dark:to-neutral-900 text-white font-medium shadow-md hover:scale-110 transition-all duration-300 text-center">
               Contact Me
             </button>
-            <button
-              className="px-6 py-3 rounded-lg border border-neutral-300 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 font-medium hover:scale-110 transition-all duration-300 text-center"
-            >
+            <button className="px-6 py-3 rounded-lg border border-neutral-300 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 font-medium hover:scale-110 transition-all duration-300 text-center">
               View Profile
             </button>
           </div>
@@ -50,7 +45,7 @@ export function Hero() {
               className="p-2 rounded-full border border-neutral-100 dark:border-neutral-700 bg-neutral-100 shadow-md dark:bg-gradient-to-br from-neutral-700 to-neutral-900 dark:from-neutral-600 dark:to-neutral-900 hover:scale-110 duration-300 transition"
             >
               <Github
-              target="_blank"
+                target="_blank"
                 size={20}
                 className="text-neutral-700 dark:text-neutral-300"
               />
@@ -100,7 +95,6 @@ export function Hero() {
           <div className="flex flex-col items-center space-y-5">
             {/* Image placeholder with gradient */}
             <div className="w-48 h-48 md:w-56 md:h-56 rounded-full bg-gradient-to-br from-neutral-700 to-neutral-900 dark:from-neutral-600 dark:to-neutral-900 overflow-hidden border-4 border-neutral-300 dark:border-neutral-700 shadow-lg">
-              {/* You would replace this with your actual image */}
               <div className="w-full h-full flex items-center justify-center text-neutral-400">
                 <img src={me} alt="" />
               </div>
@@ -127,31 +121,31 @@ export function Hero() {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4 w-full pt-4">
               <div className="text-center">
-<CountUp
-  to={12}
-  duration={1}
-  className="text-2xl font-bold text-neutral-900 dark:text-neutral-200"
-/>
+                <CountUp
+                  to={12}
+                  duration={1}
+                  className="text-2xl font-bold text-neutral-900 dark:text-neutral-200"
+                />
                 <div className="text-xs text-neutral-600 dark:text-neutral-400">
                   Projects
                 </div>
               </div>
               <div className="text-center">
-<CountUp
-  to={3}
-  duration={1}
-  className="text-2xl font-bold text-neutral-900 dark:text-neutral-200"
-/>
+                <CountUp
+                  to={3}
+                  duration={1}
+                  className="text-2xl font-bold text-neutral-900 dark:text-neutral-200"
+                />
                 <div className="text-xs text-neutral-600 dark:text-neutral-400">
                   Years
                 </div>
               </div>
               <div className="text-center">
-<CountUp
-  to={8}
-  duration={1}
-  className="text-2xl font-bold text-neutral-900 dark:text-neutral-200"
-/>
+                <CountUp
+                  to={8}
+                  duration={1}
+                  className="text-2xl font-bold text-neutral-900 dark:text-neutral-200"
+                />
                 <div className="text-xs text-neutral-600 dark:text-neutral-400">
                   Clients
                 </div>

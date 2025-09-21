@@ -5,11 +5,15 @@ import Layout from "./pages/Layout/Layout";
 import AnimatedGrid from "./pages/Layout/AnimatedGrid";
 import ClickSpark from "./components/ClickSpark";
 import Project from "./pages/Project/Project";
+import { useApp } from "./context/Appcontext";
 
 function App() {
+
+    const { theme } = useApp();
+  
   return (
 <ClickSpark
-  sparkColor='#fff'
+  sparkColor={theme==='dark'?'#fff':'#000'}
   sparkSize={10}
   sparkRadius={15}
   sparkCount={8}
