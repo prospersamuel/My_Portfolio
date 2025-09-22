@@ -1,6 +1,6 @@
 // components/Footer.jsx
 import { Github, Linkedin, Twitter, Mail, ExternalLink, Instagram, PhoneCall } from 'lucide-react';
-import { SiWhatsapp } from 'react-icons/si';
+import { SiWhatsapp, SiX } from 'react-icons/si';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -70,7 +70,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="dark:hover:text-neutral-200 hover:text-neutral-900 transition-colors flex items-center gap-2 group"
                 >
-                  <Twitter className="w-4 h-4" />
+                  <SiX className="w-4 h-4" />
                   <span>Twitter</span>
                 </a>
               </li>
@@ -119,7 +119,7 @@ const Footer = () => {
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="p-2 rounded-full border border-neutral-100 dark:border-neutral-700 bg-neutral-100 shadow-md dark:bg-gradient-to-br from-neutral-700 to-neutral-900 dark:from-neutral-600 dark:to-neutral-900 hover:scale-110 duration-300 transition"
-                  aria-label="LinkedIn"
+                  aria-label="phone number"
                 >
                   <PhoneCall className="w-5 h-5" />
                 </a>
@@ -128,7 +128,7 @@ const Footer = () => {
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="p-2 rounded-full border border-neutral-100 dark:border-neutral-700 bg-neutral-100 shadow-md dark:bg-gradient-to-br from-neutral-700 to-neutral-900 dark:from-neutral-600 dark:to-neutral-900 hover:scale-110 duration-300 transition"
-                  aria-label="Twitter"
+                  aria-label="whatsapp"
                 >
                   <SiWhatsapp className="w-5 h-5" />
                 </a>

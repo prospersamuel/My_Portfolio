@@ -1,9 +1,9 @@
-import { Facebook, Github, Instagram, Linkedin, Twitter } from "lucide-react";
-import AnimatedGrid from "../Layout/AnimatedGrid";
+import {  Github, Instagram  } from "lucide-react";
 import BlurText from "../../components/BlurText";
 import TextType from "../../components/TextType";
 import me from "../../assets/mee.png";
 import CountUp from "../../components/Countup";
+import { SiX } from "react-icons/si";
 
 export function Hero() {
   return (
@@ -65,7 +65,7 @@ export function Hero() {
               target="_blank"
               className="p-2 rounded-full border border-neutral-100 dark:border-neutral-700 bg-neutral-100 shadow-md dark:bg-gradient-to-br from-neutral-700 to-neutral-900 dark:from-neutral-600 dark:to-neutral-900 hover:scale-110 duration-300 transition"
             >
-              <Twitter
+              <SiX
                 size={20}
                 className="text-neutral-700 dark:text-neutral-300"
               />
