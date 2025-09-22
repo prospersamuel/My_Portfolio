@@ -94,10 +94,8 @@ export function Hero() {
         <div className="dark:bg-neutral-900/70 bg-neutral-100/5 backdrop-blur-sm border-2 border-neutral-300 dark:border-neutral-700 rounded-2xl p-6 shadow-md max-w-md w-full order-1 lg:order-2 overflow-hidden">
           <div className="flex flex-col items-center space-y-5">
             {/* Image placeholder with gradient */}
-            <div className="w-48 h-48 md:w-56 md:h-56 rounded-full bg-gradient-to-br from-neutral-700 to-neutral-900 dark:from-neutral-600 dark:to-neutral-900 overflow-hidden border-4 border-neutral-300 dark:border-neutral-700 shadow-lg">
-              <div className="w-full h-full flex items-center justify-center text-neutral-400">
-                <img src={me} alt="" />
-              </div>
+            <div className="w-48 h-48 md:w-56 md:h-56 rounded-full bg-gradient-to-br from-neutral-700 to-neutral-900 dark:from-neutral-600 dark:to-neutral-900 overflow-hidden border-4 border-neutral-300 dark:border-neutral-700 shadow-md">
+                <img src={me} alt="" className="select-none" onContextMenu={(e)=>e.preventDefault()} />
             </div>
 
             <h2 className="text-xl font-semibold text-neutral-900 dark:text-neutral-200 mt-4">

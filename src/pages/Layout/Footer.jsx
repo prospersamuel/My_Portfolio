@@ -18,8 +18,8 @@ const Footer = () => {
                 [
                   {name: 'Profile', link: '/profile'},
                   {name: 'Projects', link: '/projects'}
-                ].map((link)=>(
-              <li>
+                ].map((link, i)=>(
+              <li key={i}>
                 <Link 
                   to={link.link} 
                   className="dark:hover:text-neutral-200 hover:text-neutral-900 transition-colors"
