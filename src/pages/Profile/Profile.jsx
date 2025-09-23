@@ -1,9 +1,11 @@
 import { useRef } from 'react';
 import { Calendar, ChevronRight, Earth } from "lucide-react";
-import mee from "../../assets/mee.png";
+import medark from "../../assets/medark.png";
+import melight from "../../assets/melight.png";
 import BlurText from "../../components/BlurText";
 import { SiFacebook, SiGithub, SiInstagram, SiUpwork, SiX } from 'react-icons/si';
 import CalendlyScheduler from "../../components/CalendlyScheduler"; 
+import { useApp } from '../../context/Appcontext';
 
 export default function Profile() {
   const sectionRefs = {
@@ -33,6 +35,9 @@ export default function Profile() {
     { id: 'skills', label: 'Technical Skills' },
     { id: 'services', label: 'Services' }
   ];
+
+    const { theme } = useApp();
+  
 
   return (
     <>
@@ -68,9 +73,9 @@ export default function Profile() {
 
           {/* Profile + language */}
           <div className="flex md:-mt-32 mt-24 flex-col gap-0 md:gap-3 items-start md:items-center">
-            <div className="md:w-40 md:h-40 w-10 h-10 rounded-full bg-gradient-to-br from-neutral-700 to-neutral-900 dark:from-neutral-600 dark:to-neutral-900 overflow-hidden border border-neutral-300 dark:border-neutral-700 shadow-md">
+            <div className="md:w-40 md:h-40 w-10 h-10 rounded-full bg-gradient-to-br from-neutral-700 to-neutral-900 dark:from-neutral-600 dark:to-neutral-900 overflow-hidden border border-neutral-400 dark:border-neutral-700 shadow-md">
               <img
-                src={mee}
+                src={theme === 'dark' ? medark : melight}
                 className="select-none"
                 onContextMenu={(e) => e.preventDefault()}
                 alt=""
@@ -95,12 +100,12 @@ export default function Profile() {
           {/* Updated Schedule a call button with Calendly */}
        <button 
   onClick={() => calendlyRef.current?.openModal()}
-  className="flex items-center mb-6 md:-ml-2 -m-0 pl-4 pr-0.5 md:pr-1 border border-neutral-300 dark:border-neutral-700 bg-gradient-to-br from-neutral-700 to-neutral-900 dark:from-neutral-700 dark:to-neutral-900 rounded-full w-fit py-0.5 md:py-1.5 space-x-4 hover:opacity-90 transition-opacity cursor-pointer"
+  className="flex items-center mb-6 md:-ml-2 -m-0 pl-4 pr-0.5 md:pr-1 border border-neutral-100 dark:border-neutral-700 bg-neutral-100 shadow-md dark:bg-gradient-to-br from-neutral-700 to-neutral-900 dark:from-neutral-600 dark:to-neutral-900 hover:scale-110 duration-300 rounded-full w-fit py-0.5 md:py-1.5 space-x-4 transition-all cursor-pointer"
 >
-  <Calendar className="md:size-5 size-4"/>
-  <span className="text-sm md:text-base">Schedule a call</span>
-  <div className="rounded-full border p-0.5 flex justify-center items-center border-neutral-300 dark:border-neutral-700">
-    <ChevronRight className="size-4 md:size-5"/>
+  <Calendar className="md:size-5 size-4 text-neutral-20d0"/>
+  <span className="text-sm md:text-base text-neutral-20d0">Schedule a call</span>
+  <div className="rounded-full border p-0.5 flex justify-center items-center border-neutral-600">
+    <ChevronRight className="size-4 md:size-5 text-neutrdal-200"/>
   </div>
 </button>
 
@@ -115,22 +120,25 @@ export default function Profile() {
               delay={150}
               animateBy="words"
               direction="top"
-              className="text-3xl md:text-4xl text-center font-bold dark:text-neutral-200 text-neutral-800 leading-tight"
+              className="text-3xl md:text-4xl text-center font-bold dark:text-neutral-200 text-neutral-900/90 leading-tight"
             />
-            <h2 className="md:text-xl text-lg md:mt-1 mt-0.5 mb-5 text-neutral-900 dark:text-neutral-300">
+            <h2 className="md:text-xl text-lg md:mt-1 mt-0.5 mb-5 text-neutral-900/85 dark:text-neutral-300">
               Full Stack Developer
             </h2>
             <div className='flex space-x-2 md:space-x-3 overflow-x-auto -ml-1'>
               {[
-                {name: "Github", icon: <SiGithub/>, link: "www.github.com"},
-                {name: "Twitter", icon: <SiX/>, link: "www.github.com"},
+                {name: "Github", icon: <SiGithub/>, link: "https://github.com/prospersamuel"},
+                {name: "Twitter", icon: <SiX/>, link: "https://x.com/ProsperSam35123"},
                 {name: "Facebook", icon: <SiFacebook/>, link: "www.github.com"},
-                {name: "Instagram", icon: <SiInstagram/>, link: "www.github.com"},
+                {name: "Instagram", icon: <SiInstagram/>, link: "https://www.instagram.com/prosper_samuel55/"},
               ].map((social, i) => (
-                <div key={i} className="flex items-center mb-6 px-2 border border-neutral-300 dark:border-neutral-700 bg-gradient-to-br from-neutral-700 to-neutral-900 dark:from-neutral-700 dark:to-neutral-900 rounded-full w-fit py-1 gap-1.5">
+                <a href={social.link} 
+                target="_blank"
+                rel="noopener noreferrer"
+                 key={i} className="flex items-center mb-6 px-2 border border-neutral-100 dark:border-neutral-700 bg-neutral-100 shadow-md dark:bg-gradient-to-br from-neutral-700 to-neutral-900 dark:from-neutral-600 dark:to-neutral-900 hover:scale-110 duration-300 transition rounded-full w-fit py-1 gap-1.5">
                   <span className="size-3 w-fit h-fit">{social.icon}</span> 
                   <span className="text-xs">{social.name}</span>
-                </div>
+                </a>
               ))}
             </div>
           </div>
