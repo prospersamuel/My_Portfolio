@@ -25,7 +25,7 @@ const techLogos = [
       <div className='h-px w-full mt-10 sm:mt-5 mb-10 sm:mb-20 bg-gradient-to-r from-transparent via-neutral-400 to-transparent dark:via-neutral-700'></div>
 
     <div className='relative w-[85%] m-auto mt-10 overflow-hidden'>
-      <h2 className="text-2xl md:text-3xl font-bold text-center text-neutral-900 dark:text-neutral-200 mb-3">
+      <h2 className="text-2xl lg:text-3xl font-bold text-center text-neutral-900 dark:text-neutral-200 mb-3">
             Technologies I Work With
           </h2>
           <p className="text-neutral-600 dark:text-neutral-400 text-center max-w-2xl mx-auto mb-10">
@@ -41,7 +41,7 @@ const techLogos = [
         scaleOnHover
         fadeOut
         ariaLabel="Technology partners"
-        className="[--logoloop-logoHeight:48px] [--logoloop-gap:32px] md:[--logoloop-logoHeight:88px] md:[--logoloop-gap:60px]"
+        className="[--logoloop-logoHeight:48px] [--logoloop-gap:32px] lg:[--logoloop-logoHeight:88px] lg:[--logoloop-gap:60px]"
       />
     </div>
           <div className='h-px w-full mt-14 sm:mt-24 bg-gradient-to-r from-transparent via-neutral-400 to-transparent dark:via-neutral-700'></div>

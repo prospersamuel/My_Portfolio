@@ -7,9 +7,9 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className=" border-neutral-800 text-neutral-600 dark:text-neutral-400 pb-10 w-[80%] m-auto">
+    <footer className=" border-neutral-700 text-neutral-600 dark:text-neutral-400 pb-10 w-[80%] m-auto">
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mb-8">
           {/* Portfolio Links */}
           <div>
             <h4 className="font-semibold text-neutral-700 dark:text-neutral-200 mb-4 text-lg">Portfolio</h4>
@@ -141,7 +141,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className=" pt-8 flex justify-center">
-          <div className="text-sm mb-4 md:mb-0">
+          <div className="text-sm mb-4 lg:mb-0">
             © {currentYear} Prosper Samuel. All rights reserved.
           </div>
         </div>

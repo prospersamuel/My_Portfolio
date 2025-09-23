@@ -14,6 +14,16 @@ export const AppProvider = ({ children }) => {
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark');
     localStorage.setItem('theme', theme);
+    
+    // Change favicon based on theme
+    const favicon = document.querySelector("link[rel*='icon']");
+    if (favicon) {
+      if (theme === 'dark') {
+        favicon.href = '/src/assets/medark.png'; // Your dark mode favicon
+      } else {
+        favicon.href = '/src/assets/melight.png'; // Your light mode favicon
+      }
+    }
   }, [theme]);
 
   return (

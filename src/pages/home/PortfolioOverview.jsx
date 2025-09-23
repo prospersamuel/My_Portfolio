@@ -20,7 +20,7 @@ export const PortfolioOverview = () => {
       <div className="max-w-6xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold text-neutral-900 dark:text-neutral-200 mb-3">
+          <h2 className="text-2xl lg:text-3xl font-bold text-neutral-900 dark:text-neutral-200 mb-3">
             A Developer Who Delivers
           </h2>
           <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
@@ -35,9 +35,9 @@ export const PortfolioOverview = () => {
             {/* Tabs */}
             <div className="border-b flex justify-start border-neutral-200 dark:border-neutral-700 mb-8">
               <button
-                className={`px-3 md:px-4 py-2 font-medium text-[12px]  md:text-[16px] ${
+                className={`px-3 lg:px-4 py-2 font-medium text-[12px]  lg:text-[16px] ${
                   activeTab === "skills"
-                    ? "text-neutral-800 dark:text-neutral-200 border-b-2 border-neutral-600"
+                    ? "text-neutral-700 dark:text-neutral-200 border-b-2 border-neutral-600"
                     : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200"
                 }`}
                 onClick={() => setActiveTab("skills")}
@@ -45,9 +45,9 @@ export const PortfolioOverview = () => {
                 Skills & Workflow
               </button>
               <button
-                className={`px-3 md:px-4 py-2 font-medium text-[12px]  md:text-[16px] ${
+                className={`px-3 lg:px-4 py-2 font-medium text-[12px]  lg:text-[16px] ${
                   activeTab === "services"
-                    ? "text-neutral-800 dark:text-neutral-200 border-b-2 border-neutral-600"
+                    ? "text-neutral-700 dark:text-neutral-200 border-b-2 border-neutral-600"
                     : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200"
                 }`}
                 onClick={() => setActiveTab("services")}
@@ -55,9 +55,9 @@ export const PortfolioOverview = () => {
                 Services I Offer
               </button>
               <button
-                className={`px-3 md:px-4 py-2 font-medium text-[12px]  md:text-[16px] ${
+                className={`px-3 lg:px-4 py-2 font-medium text-[12px]  lg:text-[16px] ${
                   activeTab === "extras"
-                    ? "text-neutral-800 dark:text-neutral-200 border-b-2 border-neutral-600"
+                    ? "text-neutral-700 dark:text-neutral-200 border-b-2 border-neutral-600"
                     : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200"
                 }`}
                 onClick={() => setActiveTab("extras")}
@@ -281,7 +281,7 @@ export const PortfolioOverview = () => {
              Get in touch
             </button>
             <button
-              className="px-6 py-3 rounded-lg border border-neutral-300 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 font-medium hover:scale-110 transition-all duration-300 text-center"
+              className="px-6 py-3 rounded-lg border border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-200 font-medium hover:scale-110 transition-all duration-300 text-center"
             >
               View Projects
             </button>
