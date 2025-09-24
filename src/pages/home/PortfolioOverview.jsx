@@ -11,6 +11,8 @@ import {
   PhoneCall,
 } from "lucide-react";
 import {SiChatbot, SiOnlyoffice, SiWhatsapp} from 'react-icons/si'
+import { Link } from "react-router-dom";
+import { scrollToTop } from "../Layout/Layout";
 
 export const PortfolioOverview = () => {
   const [activeTab, setActiveTab] = useState("skills");
@@ -223,8 +225,8 @@ export const PortfolioOverview = () => {
           <div className="lg:col-span-1">
             <div className="dark:bg-neutral-900/70 sticky top-6 bg-neutral-100/5 backdrop-blur-sm border-2 border-neutral-300 dark:border-neutral-700 rounded-2xl p-6 shadow-md max-w-md w-full order-1 lg:order-2 overflow-hidden">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 rounded-full bg-neutral-100 dark:bg-neutral-900/30 flex items-center justify-center">
-                  <Mail className="w-6 h-6 text-neutral-600" />
+                <div className="w-12 h-12 rounded-full bg-neutral-200/70 dark:bg-neutral-700 flex items-center justify-center">
+                  <Mail className="w-6 h-6 dark:text-neutral-900 text-neutral-600" />
                 </div>
                 <div>
                   <h3 className="font-semibold">Get in Touch</h3>
@@ -275,16 +277,19 @@ export const PortfolioOverview = () => {
             Ready to start your next project?
           </h2>
           <div className="flex gap-4 flex-row justify-center">
-             <button
+             <a
+             href="mailto:prospersamuel100@gmail.com"
               className="px-6 py-3 rounded-lg bg-gradient-to-br from-neutral-700 to-neutral-900 dark:from-neutral-600 dark:to-neutral-900 text-white font-medium shadow-md hover:scale-110 transition-all duration-300 text-center"
             >
              Get in touch
-            </button>
-            <button
+            </a>
+            <Link
+            to={'/projects'}
+            onClick={()=>scrollToTop()}
               className="px-6 py-3 rounded-lg border border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-200 font-medium hover:scale-110 transition-all duration-300 text-center"
             >
               View Projects
-            </button>
+            </Link>
           </div>
         </div>
 

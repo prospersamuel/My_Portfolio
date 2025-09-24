@@ -151,7 +151,7 @@ export default function Profile() {
               delay={150}
               animateBy="words"
               direction="top"
-              className="text-3xl lg:text-4xl text-center font-bold dark:text-neutral-200 text-neutral-900/90 leading-tight"
+              className="text-3xl lg:text-5xl text-center font-bold dark:text-neutral-200 text-neutral-900/90 leading-tight"
             />
             <h2 className="lg:text-xl text-lg lg:mt-1 mt-0.5 mb-5 text-neutral-900/85 dark:text-neutral-300">
               Full Stack Developer

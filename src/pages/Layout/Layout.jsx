@@ -9,21 +9,31 @@ export default function Layout() {
   const { toggleTheme, theme } = useApp();
   const navigate = useNavigate();
 
+  
   const items = [
     {
       icon: <HomeIcon size={18} />,
       label: "Home",
-      onClick: () => navigate("/"),
+      onClick: () => {
+        navigate("/");
+        scrollToTop();
+      },
     },
     {
       icon: <User size={18} />,
       label: "Profile",
-      onClick: () => navigate("/profile"),
+      onClick: () => {
+        navigate("/profile");
+        scrollToTop();
+      },
     },
     {
       icon: <Code2 size={18} />,
       label: "Projects",
-      onClick: () => navigate('/projects'),
+      onClick: () => {
+        navigate("/projects");
+        scrollToTop();
+      },
     },
     {
       icon: theme === "dark" ? <Sun size={18} /> : <Moon size={18} />,
@@ -49,7 +59,7 @@ export default function Layout() {
   return (
     <div>
       <Outlet />
-      <Footer/>
+      <Footer />
       <Navbar
         items={items}
         panelHeight={58}
@@ -60,3 +70,10 @@ export default function Layout() {
     </div>
   );
 }
+
+    export const scrollToTop = () => {
+       window.scrollTo({
+         top: 0,
+         behavior: "smooth",
+       });
+     };

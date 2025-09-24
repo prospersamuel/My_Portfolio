@@ -6,6 +6,8 @@ import { SiX } from "react-icons/si";
 import medark from "../../assets/medark.png";
 import melight from "../../assets/melight.png";
 import { useApp } from "../../context/Appcontext";
+import { Link } from "react-router-dom";
+import { scrollToTop } from "../Layout/Layout";
 
 export function Hero() {
 
@@ -34,12 +36,12 @@ export function Hero() {
           </div>
 
           <div className="flex flex-row gap-4 justify-center lg:justify-start">
-            <button className="px-6 py-3 rounded-lg bg-gradient-to-br from-neutral-700 to-neutral-900 dark:from-neutral-600 dark:to-neutral-900 text-white font-medium shadow-md hover:scale-110 transition-all duration-300 text-center">
+            <a href="mailto:prospersamuel100@gmail.com" className="px-6 py-3 rounded-lg bg-gradient-to-br from-neutral-700 to-neutral-900 dark:from-neutral-600 dark:to-neutral-900 text-white font-medium shadow-md hover:scale-110 transition-all duration-300 text-center">
               Contact Me
-            </button>
-            <button className="px-6 py-3 rounded-lg border border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-200 font-medium hover:scale-110 transition-all duration-300 text-center">
+            </a>
+            <Link to={'/profile'} onClick={() => scrollToTop()} className="px-6 py-3 rounded-lg border border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-200 font-medium hover:scale-110 transition-all duration-300 text-center">
               View Profile
-            </button>
+            </Link>
           </div>
 
           {/* Social Links */}

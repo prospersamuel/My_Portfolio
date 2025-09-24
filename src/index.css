@@ -6,25 +6,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover,
-  input:-webkit-autofill:focus,
-  input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 1000px theme('colors.white') inset !important;
-    -webkit-text-fill-color: theme('colors.gray.700') !important;
-  }
-
-  /* Dark mode (respects Tailwind's 'dark:' class) */
-  .dark input:-webkit-autofill,
-  .dark input:-webkit-autofill:hover,
-  .dark input:-webkit-autofill:focus,
-  .dark input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 1000px theme('colors.slate.700') inset !important;
-    -webkit-text-fill-color: theme('colors.white') !important;
-  }
-}
-
 
 html{
     scroll-behavior: smooth;
@@ -42,9 +23,4 @@ html{
   width: 5px;
   height: 5px;
   display: none;
-}
-::-webkit-scrollbar-thumb {
-  background-color: red;
-  display: none;
-  border-radius: 3px;
 }

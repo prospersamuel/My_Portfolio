@@ -1,7 +1,8 @@
 // components/Footer.jsx
-import { Github, Linkedin, Twitter, Mail, ExternalLink, Instagram, PhoneCall } from 'lucide-react';
+import { Github,  Mail, Instagram, PhoneCall } from 'lucide-react';
 import { SiWhatsapp, SiX } from 'react-icons/si';
 import { Link } from 'react-router-dom';
+import { scrollToTop } from './Layout';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -16,12 +17,14 @@ const Footer = () => {
             <ul className="space-y-3">
               {
                 [
+                  {name: 'Home', link: '/'},
                   {name: 'Profile', link: '/profile'},
                   {name: 'Projects', link: '/projects'}
                 ].map((link, i)=>(
               <li key={i}>
                 <Link 
                   to={link.link} 
+                  onClick={() => scrollToTop()}
                   className="dark:hover:text-neutral-200 hover:text-neutral-900 transition-colors"
                 >
                   <span>{link.name}</span>
