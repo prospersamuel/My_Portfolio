@@ -214,7 +214,7 @@ export function Hero() {
             </motion.h2>
             
             <motion.div 
-              className="flex justify-center gap-2 flex-wrap"
+              className="flex justify-center gap-2"
               variants={containerVariants}
             >
               {["React", "Node.js", "Python", "Flutter"].map((tech, index) => (
