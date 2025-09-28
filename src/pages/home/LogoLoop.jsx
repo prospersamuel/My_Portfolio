@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState, memo } from 'react';
+import { motion } from 'framer-motion';
 
 const ANIMATION_CONFIG = {
-  SMOOTH_TAU: 0.25,
+  SMOOTH_TAU: 0.15, // Faster animation response
   MIN_COPIES: 2,
   COPY_HEADROOM: 2
 };
@@ -148,16 +149,40 @@ export const LogoLoop = memo(
     scaleOnHover = false,
     ariaLabel = 'Partner logos',
     className,
-    style
+    style,
+    enableScrollAnimation = true // New prop for scroll animation
   }) => {
     const containerRef = useRef(null);
     const trackRef = useRef(null);
     const seqRef = useRef(null);
+    const sectionRef = useRef(null);
 
     const [seqWidth, setSeqWidth] = useState(0);
     const [copyCount, setCopyCount] = useState(ANIMATION_CONFIG.MIN_COPIES);
     const [isHovered, setIsHovered] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
+    const [isInView, setIsInView] = useState(false);
+
+    // Scroll animation
+    useEffect(() => {
+      if (!enableScrollAnimation) {
+        setIsInView(true);
+        return;
+      }
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          setIsInView(entry.isIntersecting);
+        },
+        { threshold: 0.1, rootMargin: '50px' }
+      );
+
+      if (sectionRef.current) {
+        observer.observe(sectionRef.current);
+      }
+
+      return () => observer.disconnect();
+    }, [enableScrollAnimation]);
 
     // Detect mobile screen size
     useEffect(() => {
@@ -171,8 +196,7 @@ export const LogoLoop = memo(
       return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
-
-        const resolvedLogoHeight = useMemo(() => {
+    const resolvedLogoHeight = useMemo(() => {
       if (typeof logoHeight === 'object') {
         return isMobile ? logoHeight.mobile : logoHeight.desktop;
       }
@@ -246,26 +270,24 @@ export const LogoLoop = memo(
         const isNodeItem = 'node' in item;
 
         const content = isNodeItem ? (
-          <span
+          <motion.span
             className={cx(
               'inline-flex items-center',
-              'motion-reduce:transition-none',
-              scaleOnHover &&
-                'transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-[110%]'
+              'motion-reduce:transition-none'
             )}
             aria-hidden={!!item.href && !item.ariaLabel}
+            whileHover={scaleOnHover ? { scale: 1.1 } : {}}
+            transition={{ duration: 0.2, ease: "easeOut" }}
           >
             {item.node}
-          </span>
+          </motion.span>
         ) : (
-          <img
+          <motion.img
             className={cx(
               'h-[var(--logoloop-logoHeight)] w-auto block object-contain',
               '[-webkit-user-drag:none] pointer-events-none',
               '[image-rendering:-webkit-optimize-contrast]',
-              'motion-reduce:transition-none',
-              scaleOnHover &&
-                'transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120'
+              'motion-reduce:transition-none'
             )}
             src={item.src}
             srcSet={item.srcSet}
@@ -277,13 +299,15 @@ export const LogoLoop = memo(
             loading="lazy"
             decoding="async"
             draggable={false}
+            whileHover={scaleOnHover ? { scale: 1.1 } : {}}
+            transition={{ duration: 0.2, ease: "easeOut" }}
           />
         );
 
         const itemAriaLabel = isNodeItem ? (item.ariaLabel ?? item.title) : (item.alt ?? item.title);
 
         const inner = item.href ? (
-          <a
+          <motion.a
             className={cx(
               'inline-flex items-center no-underline rounded',
               'transition-opacity duration-200 ease-linear',
@@ -294,27 +318,32 @@ export const LogoLoop = memo(
             aria-label={itemAriaLabel || 'logo link'}
             target="_blank"
             rel="noreferrer noopener"
+            whileHover={{ y: -2 }}
+            whileTap={{ y: 0 }}
           >
             {content}
-          </a>
+          </motion.a>
         ) : (
           content
         );
 
         return (
-          <li
+          <motion.li
             className={cx(
               'flex-none mr-[var(--logoloop-gap)] text-[length:var(--logoloop-logoHeight)] leading-[1]',
               scaleOnHover && 'overflow-visible group/item'
             )}
             key={key}
             role="listitem"
+            initial={enableScrollAnimation ? { opacity: 0, y: 20 } : false}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.5, delay: key * 0.1 }}
           >
             {inner}
-          </li>
+          </motion.li>
         );
       },
-      [scaleOnHover]
+      [scaleOnHover, enableScrollAnimation, isInView]
     );
 
     const logoLists = useMemo(
@@ -327,7 +356,7 @@ export const LogoLoop = memo(
             aria-hidden={copyIndex > 0}
             ref={copyIndex === 0 ? seqRef : undefined}
           >
-            {logos.map((item, itemIndex) => renderLogoItem(item, `${copyIndex}-${itemIndex}`))}
+            {logos.map((item, itemIndex) => renderLogoItem(item, itemIndex))}
           </ul>
         )),
       [copyCount, logos, renderLogoItem]
@@ -343,43 +372,50 @@ export const LogoLoop = memo(
     );
 
     return (
-      <div
-        ref={containerRef}
-        className={rootClasses}
-        style={containerStyle}
-        role="region"
-        aria-label={ariaLabel}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+      <motion.div
+        ref={sectionRef}
+        initial={enableScrollAnimation ? { opacity: 0, y: 30 } : false}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+        transition={{ duration: 0.6 }}
       >
-        {fadeOut && (
-          <>
-            <div
-              aria-hidden
-              className={cx(
-                'pointer-events-none absolute inset-y-0 left-0 z-[1]',
-                'w-[clamp(24px,8%,120px)]',
-                'bg-[linear-gradient(to_right,var(--logoloop-fadeColor,var(--logoloop-fadeColorAuto))_0%,rgba(0,0,0,0)_100%)]'
-              )}
-            />
-            <div
-              aria-hidden
-              className={cx(
-                'pointer-events-none absolute inset-y-0 right-0 z-[1]',
-                'w-[clamp(24px,8%,120px)]',
-                'bg-[linear-gradient(to_left,var(--logoloop-fadeColor,var(--logoloop-fadeColorAuto))_0%,rgba(0,0,0,0)_100%)]'
-              )}
-            />
-          </>
-        )}
-
         <div
-          className={cx('flex w-max will-change-transform dark:text-neutral-200 select-none', 'motion-reduce:transform-none')}
-          ref={trackRef}
+          ref={containerRef}
+          className={rootClasses}
+          style={containerStyle}
+          role="region"
+          aria-label={ariaLabel}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         >
-          {logoLists}
+          {fadeOut && (
+            <>
+              <div
+                aria-hidden
+                className={cx(
+                  'pointer-events-none absolute inset-y-0 left-0 z-[1]',
+                  'w-[clamp(24px,8%,120px)]',
+                  'bg-[linear-gradient(to_right,var(--logoloop-fadeColor,var(--logoloop-fadeColorAuto))_0%,rgba(0,0,0,0)_100%)]'
+                )}
+              />
+              <div
+                aria-hidden
+                className={cx(
+                  'pointer-events-none absolute inset-y-0 right-0 z-[1]',
+                  'w-[clamp(24px,8%,120px)]',
+                  'bg-[linear-gradient(to_left,var(--logoloop-fadeColor,var(--logoloop-fadeColorAuto))_0%,rgba(0,0,0,0)_100%)]'
+                )}
+              />
+            </>
+          )}
+
+          <div
+            className={cx('flex w-max will-change-transform dark:text-neutral-200 select-none', 'motion-reduce:transform-none')}
+            ref={trackRef}
+          >
+            {logoLists}
+          </div>
         </div>
-      </div>
+      </motion.div>
     );
   }
 );

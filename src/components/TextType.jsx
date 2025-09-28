@@ -33,8 +33,11 @@ const TextType = ({
 
   const textArray = useMemo(() => (Array.isArray(text) ? text : [text]), [text]);
 
-  // Check if component has animated before using sessionStorage
+  // Check if component has animated before using sessionStorage (only for non-looping)
   useEffect(() => {
+    // Skip this check for looping text
+    if (loop) return;
+
     const hasAnimatedBefore = sessionStorage.getItem('textTypeHasAnimated');
     if (hasAnimatedBefore) {
       setHasAnimated(true);
@@ -44,7 +47,7 @@ const TextType = ({
       setDisplayedText(processedText);
       setCurrentCharIndex(processedText.length);
     }
-  }, [textArray, currentTextIndex, reverseMode]);
+  }, [textArray, currentTextIndex, reverseMode, loop]); // Added loop to dependencies
 
   const getRandomSpeed = useCallback(() => {
     if (!variableSpeed) return typingSpeed;
@@ -94,8 +97,8 @@ const TextType = ({
   }, [showCursor, cursorBlinkDuration, currentCharIndex, isDeleting, textArray, currentTextIndex]);
 
   useEffect(() => {
-    // Don't animate if we've already animated before
-    if (!isVisible || hasAnimated) return;
+    // Don't animate if we've already animated before AND it's not looping
+    if (!isVisible || (hasAnimated && !loop)) return;
 
     let timeout;
 
@@ -107,7 +110,7 @@ const TextType = ({
         if (displayedText === '') {
           setIsDeleting(false);
           if (currentTextIndex === textArray.length - 1 && !loop) {
-            // Mark as animated when done
+            // Only save to sessionStorage if not looping
             sessionStorage.setItem('textTypeHasAnimated', 'true');
             return;
           }
@@ -138,8 +141,10 @@ const TextType = ({
             setIsDeleting(true);
           }, pauseDuration);
         } else {
-          // Mark as animated when done for single text
-          sessionStorage.setItem('textTypeHasAnimated', 'true');
+          // Only save to sessionStorage if not looping
+          if (!loop) {
+            sessionStorage.setItem('textTypeHasAnimated', 'true');
+          }
         }
       }
     };
@@ -166,7 +171,8 @@ const TextType = ({
     reverseMode,
     variableSpeed,
     onSentenceComplete,
-    hasAnimated // Added dependency
+    hasAnimated,
+    getRandomSpeed
   ]);
 
   const shouldHideCursor =
