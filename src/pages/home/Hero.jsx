@@ -98,7 +98,7 @@ export function Hero() {
               delay={150}
               animateBy="words"
               direction="top"
-              className="text-4xl lg:text-6xl text-center font-bold dark:text-neutral-200 text-neutral-900/95 leading-tight"
+              className="text-4xl lg:text-6xl text-center drop-shadow-2xl font-bold dark:text-neutral-200 text-neutral-800 leading-tight"
             />
             <motion.div variants={itemVariants}>
               <TextType

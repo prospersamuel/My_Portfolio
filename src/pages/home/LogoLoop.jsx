@@ -150,7 +150,7 @@ export const LogoLoop = memo(
     ariaLabel = 'Partner logos',
     className,
     style,
-    enableScrollAnimation = true // New prop for scroll animation
+    enableScrollAnimation = false // New prop for scroll animation
   }) => {
     const containerRef = useRef(null);
     const trackRef = useRef(null);

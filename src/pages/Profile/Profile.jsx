@@ -86,9 +86,6 @@ export default function Profile() {
             <div className="px-1.5 py-0.5 lg:px-3 lg:py-1 text-xs rounded-lg border border-neutral-300 dark:border-neutral-700">
               English
             </div>
-            <div className="px-1.5 py-0.5 lg:px-3 lg:py-1 rounded-lg text-xs border border-neutral-300 dark:border-neutral-700">
-              French
-            </div>
           </div>
         </div>
 
@@ -137,9 +134,6 @@ export default function Profile() {
               <div className="px-1.5 py-0.5 lg:px-3 lg:py-1 text-xs rounded-lg border border-neutral-300 dark:border-neutral-700">
                 English
               </div>
-              <div className="px-1.5 py-0.5 lg:px-3 lg:py-1 rounded-lg text-xs border border-neutral-300 dark:border-neutral-700">
-                French
-              </div>
             </div>
           </motion.div>
         </aside>
@@ -147,10 +141,7 @@ export default function Profile() {
         {/* Main content */}
         <main className="flex-1 p-5 lg:p-20 w-[65%] mt-20 lg:mt-2 overflow-auto h-screen">
           {/* Updated Schedule a call button with Calendly */}
-          <motion.button
-              initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.1 }}
+          <button
             onClick={() => calendlyRef.current?.openModal()}
             className="flex items-center mb-6 lg:-ml-2 -m-0 pl-4 pr-0.5 lg:pr-1 border border-neutral-100 dark:border-neutral-700 bg-neutral-100 shadow-md dark:bg-gradient-to-br from-neutral-700 to-neutral-900 dark:from-neutral-700 dark:to-neutral-900 hover:scale-110 duration-300 rounded-full w-fit py-0.5 lg:py-1.5 space-x-4 transition-all cursor-pointer"
           >
@@ -161,7 +152,7 @@ export default function Profile() {
             <div className="rounded-full border p-0.5 flex justify-center items-center border-neutral-600">
               <ChevronRight className="size-4 lg:size-5 text-neutrdal-200" />
             </div>
-          </motion.button>
+          </button>
 
           {/* Hidden Calendly trigger */}
           <div className="hidden">

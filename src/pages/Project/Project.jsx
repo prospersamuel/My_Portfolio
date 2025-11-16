@@ -8,9 +8,12 @@ import promoterDashboardLight from '../../assets/Projectimages/Uplink/promoterDa
 import AutogrowHome from '../../assets/Projectimages/Autogrow/autogrowHome.png';
 import autogrowDashboard from '../../assets/Projectimages/Autogrow/autogrowDashboard.png';
 import autogrowProfile from '../../assets/Projectimages/Autogrow/autogrowProfile.png';
-import offbeatsHome from '../../assets/Projectimages/Offbeats/offbeatsHome.png';
 import offbeatsoffline from '../../assets/Projectimages/Offbeats/offbeatsoffline.png';
 import offbeatsonline from '../../assets/Projectimages/Offbeats/offbeatsonline.png';
+import dashboardoverview from '../../assets/Projectimages/SchoolWebsite/dashboardoverview.png'
+import SchoolHome from '../../assets/Projectimages/SchoolWebsite/home.png'
+import loginpage from '../../assets/Projectimages/SchoolWebsite/loginpage.png'
+import mycoursestab from '../../assets/Projectimages/SchoolWebsite/mycoursestab.png'
 import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp } from 'lucide-react';
 import { useApp } from "../../context/Appcontext";
 import {motion} from 'framer-motion'
@@ -57,7 +60,7 @@ const Projects = () => {
       id: 3,
       title: "Offbeats — Offline-First Music App",
       description: "Offbeats is a desktop music player designed to work seamlessly both online and offline. Users can browse and search songs while connected to the internet, then save them for later offline playback. With a clean interface and smooth playback engine, Offbeats offers a balance of convenience and performance, giving users a reliable music experience even without constant connectivity.",
-      link: "",
+      link: "https://github.com/prospersamuel/Offbeats-App/releases/tag/v1.0.0",
       highlights:[
        'Offline-first design — download & play songs without internet.',
        'Online mode with search and browse functionality.',
@@ -65,9 +68,29 @@ const Projects = () => {
        'Desktop-focused for fast, lightweight performance.'
       ],
       images: [
-        offbeatsHome,
+        offbeatsoffline,
         offbeatsonline,
-        offbeatsoffline
+      ]
+    },
+    {
+      id: 4,
+     title: "School Portal — Student & Admin Management System",
+description:
+  "School Portal is a modern academic management system built to simplify how schools handle student information, attendance, results, and communication. Students can log in to access their dashboard, view grades, check announcements, and manage their profile. Admins get a powerful backend with tools for managing users, posting updates, and overseeing school operations. Designed with a clean UI, fast authentication, and a secure data layer, School Portal brings a smooth digital experience to both students and staff.",
+link: "https://sunshine-academy.vercel.app/",
+highlights: [
+  "Secure login system with student and admin roles.",
+  "Student dashboard for grades, profile, and announcements.",
+  "Admin dashboard for managing users, results, and updates.",
+  "Real-time database updates with smooth navigation.",
+  "Modern UI built for speed, clarity, and easy use.",
+],
+
+      images: [
+        SchoolHome,
+        loginpage,
+        dashboardoverview,
+        mycoursestab,
       ]
     },
   ];
@@ -199,7 +222,7 @@ const ProjectSection = ({ project }) => {
                 {/* Left Button - Hidden on mobile, visible on hover desktop */}
                 <button
                   onClick={prevImage}
-                  className="hidden lg:flex absolute left-4 top-1/2 transform -translate-y-1/2 border border-neutral-700 bg-gradient-to-br from-neutral-700 to-neutral-900 hover:scale-110 duration-300 transition-all text-neutral-200 rounded-full p-2 items-center justify-center opacity-0 group-hover:opacity-100"
+                  className="hidden lg:flex absolute left-4 top-1/2 transform -translate-y-1/2 border border-neutral-700 bg-black/50 backdrop-blur-sm hover:scale-110 duration-300 transition-all text-neutral-200 rounded-full p-2 items-center justify-center opacity-0 group-hover:opacity-100"
                   aria-label="Previous image"
                 >
                   <ChevronLeft className="w-5 h-5" />
@@ -208,7 +231,7 @@ const ProjectSection = ({ project }) => {
                 {/* Right Button - Hidden on mobile, visible on hover desktop */}
                 <button
                   onClick={nextImage}
-                  className="hidden lg:flex absolute right-4 top-1/2 transform -translate-y-1/2 border border-neutral-700 bg-gradient-to-br from-neutral-700 to-neutral-900 hover:scale-110 duration-300 transition-all text-neutral-200 rounded-full p-2 items-center justify-center opacity-0 group-hover:opacity-100"
+                  className="hidden lg:flex absolute right-4 top-1/2 transform -translate-y-1/2 border border-neutral-700 bg-black/50 backdrop-blur-sm hover:scale-110 duration-300 transition-all text-neutral-200 rounded-full p-2 items-center justify-center opacity-0 group-hover:opacity-100"
                   aria-label="Next image"
                 >
                   <ChevronRight className="w-5 h-5" />
