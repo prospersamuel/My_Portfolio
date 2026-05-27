@@ -10,340 +10,320 @@ import autogrowDashboard from '../../assets/Projectimages/Autogrow/autogrowDashb
 import autogrowProfile from '../../assets/Projectimages/Autogrow/autogrowProfile.png';
 import offbeatsoffline from '../../assets/Projectimages/Offbeats/offbeatsoffline.png';
 import offbeatsonline from '../../assets/Projectimages/Offbeats/offbeatsonline.png';
-import dashboardoverview from '../../assets/Projectimages/SchoolWebsite/dashboardoverview.png'
-import SchoolHome from '../../assets/Projectimages/SchoolWebsite/home.png'
-import loginpage from '../../assets/Projectimages/SchoolWebsite/loginpage.png'
-import mycoursestab from '../../assets/Projectimages/SchoolWebsite/mycoursestab.png'
-import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp } from 'lucide-react';
+import dashboardoverview from '../../assets/Projectimages/SchoolWebsite/dashboardoverview.png';
+import SchoolHome from '../../assets/Projectimages/SchoolWebsite/home.png';
+import loginpage from '../../assets/Projectimages/SchoolWebsite/loginpage.png';
+import mycoursestab from '../../assets/Projectimages/SchoolWebsite/mycoursestab.png';
+import smmboosterLogin from '../../assets/Projectimages/SMM-booster/smmbooster-login.png';
+import smmboosterDashbaord from '../../assets/Projectimages/SMM-booster/smmbooster-dashboard.png';
+import smmboosterTopup from '../../assets/Projectimages/SMM-booster/smmbooster-topup.png';
+import smmboosterOrder from '../../assets/Projectimages/SMM-booster/smmbooster-order.png';
+import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp, ExternalLink } from 'lucide-react';
 import { useApp } from "../../context/Appcontext";
-import {motion} from 'framer-motion'
+import { motion } from 'framer-motion';
 
-const Projects = () => {
-  const { theme } = useApp();
+// ----------------------------------------------
+// Lightweight Laptop Frame (preserves original aspect ratio)
+// ----------------------------------------------
+const LaptopFrame = ({ children }) => (
+  <div className="relative w-full group">
+    <div className="bg-neutral-800 rounded-t-xl overflow-hidden shadow-lg">
+      <div className="relative">
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-8 h-4 bg-neutral-900 rounded-b-md z-10"></div>
+        <div className="bg-black">{children}</div>
+      </div>
+    </div>
+    <div className="bg-neutral-700 rounded-b-xl h-2 w-full"></div>
+  </div>
+);
 
-  const projects = [
-    {
-      id: 1,
-      title: "Uplink — Referral Tracking MVP",
-      description: "dashboards — one for companies to create/manage campaigns and another for promoters to generate referral links and track their performance. The system captures referrals using URL parameters + cookies, supports signup tracking in addition to checkout tracking, and logs referrals in real time. Companies can review referred leads/sales, while promoters can easily monitor their earnings and progress.",
-      link: "https://earnwithuplink.vercel.app/",
-      highlights:[
-        'Dual dashboards: Company (manage campaigns, approve rewards) & Promoter (track performance).',
-        'Automatic referral + signup tracking with cookies.',
-        'Real-time analytics for referrals and conversions.',
-        'Lightweight setup with no complex integrations needed.'
-      ],
-      images: [
-        theme === 'dark' ? uplinkHomeDark : uplinkHomeLight,
-        theme === 'dark' ? companyDashboardDark : companyDashboardLight,
-        theme === 'dark' ? promoterDashboardDark : promoterDashboardLight,
-      ]
-    },
-    {
-      id: 2,
-      title: "AutoGrow — Smart Earnings Dashboard",
-      description: "AutoGrow is a modern web app that lets users deposit funds and watch their balance grow automatically over time. It features a crypto-style dashboard where users can view deposits, daily/weekly/monthly earnings, and withdrawals — all with a clean, intuitive UI. The system integrates Flutterwave for payments and Firebase for authentication, database, and real-time updates. It also includes a referral system that tracks referred users, counts rewards, and boosts earnings potential.",
-      link: "https://autogrow-alpha.vercel.app/",
-      highlights:[
-       ' Automated daily/weekly/monthly earnings updates.',
-       'Secure deposits & withdrawals with Flutterwave + Firebase.',
-       'Full referral tracking system (codes, counts, bonuses, and referral earnings).',
-       'Sleek, crypto-inspired user dashboard with animations & modern UI.'
-      ],
-      images: [
-        AutogrowHome,
-        autogrowDashboard,
-        autogrowProfile
-      ]
-    },
-    {
-      id: 3,
-      title: "Offbeats — Offline-First Music App",
-      description: "Offbeats is a desktop music player designed to work seamlessly both online and offline. Users can browse and search songs while connected to the internet, then save them for later offline playback. With a clean interface and smooth playback engine, Offbeats offers a balance of convenience and performance, giving users a reliable music experience even without constant connectivity.",
-      link: "https://github.com/prospersamuel/Offbeats-App/releases/tag/v1.0.0",
-      highlights:[
-       'Offline-first design — download & play songs without internet.',
-       'Online mode with search and browse functionality.',
-       'Song caching for smooth playback across sessions.',
-       'Desktop-focused for fast, lightweight performance.'
-      ],
-      images: [
-        offbeatsoffline,
-        offbeatsonline,
-      ]
-    },
-    {
-      id: 4,
-     title: "School Portal — Student & Admin Management System",
-description:
-  "School Portal is a modern academic management system built to simplify how schools handle student information, attendance, results, and communication. Students can log in to access their dashboard, view grades, check announcements, and manage their profile. Admins get a powerful backend with tools for managing users, posting updates, and overseeing school operations. Designed with a clean UI, fast authentication, and a secure data layer, School Portal brings a smooth digital experience to both students and staff.",
-link: "https://sunshine-academy.vercel.app/",
-highlights: [
-  "Secure login system with student and admin roles.",
-  "Student dashboard for grades, profile, and announcements.",
-  "Admin dashboard for managing users, results, and updates.",
-  "Real-time database updates with smooth navigation.",
-  "Modern UI built for speed, clarity, and easy use.",
-],
+// ----------------------------------------------
+// Carousel with fast navigation and preload
+// ----------------------------------------------
+const Carousel = ({ images, title, link }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState(null);
+  const total = images.length;
 
-      images: [
-        SchoolHome,
-        loginpage,
-        dashboardoverview,
-        mycoursestab,
-      ]
-    },
-  ];
+  useEffect(() => {
+    const preload = (src) => { const img = new Image(); img.src = src; };
+    if (total > 1) {
+      preload(images[(currentIndex + 1) % total]);
+      preload(images[(currentIndex - 1 + total) % total]);
+    }
+  }, [currentIndex, images, total]);
+
+  const next = () => setCurrentIndex((prev) => (prev + 1) % total);
+  const prev = () => setCurrentIndex((prev) => (prev - 1 + total) % total);
+
+  const handleTouchStart = (e) => setTouchStart(e.touches[0].clientX);
+  const handleTouchEnd = (e) => {
+    if (!touchStart) return;
+    const diff = touchStart - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) diff > 0 ? next() : prev();
+    setTouchStart(null);
+  };
 
   return (
-    <div className="min-h-screen">
-      <main className="mx-auto lg:p-36 px-5 py-10">
-        <div className="space-y-12 lg:space-y-20">
-          {projects.map((project, i) => (
-            <motion.div
-            key={project.id} 
-               initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.2 }}
-                  viewport={{ once: true }}
-            >
-            <ProjectSection project={project} />
-            </motion.div>
-          ))}
-        </div>
-      </main>
+    <div
+      className="relative w-full h-full cursor-pointer"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
+      <a href={link} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
+        <img
+          src={images[currentIndex]}
+          alt={`${title}`}
+          className="w-full h-full object-cover object-top select-none"
+          loading="lazy"
+          decoding="async"
+        />
+      </a>
+      {total > 1 && (
+        <>
+          <button
+            onClick={(e) => { e.preventDefault(); prev(); }}
+            className="absolute left-1 top-1/2 -translate-y-1/2 bg-black/40 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity duration-150"
+          >
+            <ChevronLeft size={16} />
+          </button>
+          <button
+            onClick={(e) => { e.preventDefault(); next(); }}
+            className="absolute right-1 top-1/2 -translate-y-1/2 bg-black/40 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity duration-150"
+          >
+            <ChevronRight size={16} />
+          </button>
+          <div className="absolute bottom-1 left-1/2 -translate-x-1/2 flex gap-1">
+            {images.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={(e) => { e.preventDefault(); setCurrentIndex(idx); }}
+                className={`w-1.5 h-1.5 rounded-full transition-all ${idx === currentIndex ? 'bg-white w-3' : 'bg-white/50'}`}
+              />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };
 
-const ProjectSection = ({ project }) => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [touchStart, setTouchStart] = useState(null);
-  const [touchEnd, setTouchEnd] = useState(null);
-  const [isExpanded, setIsExpanded] = useState(false);
-  const carouselRef = useRef(null);
+// ----------------------------------------------
+// Main Projects with Bento Grid Layout
+// ----------------------------------------------
+const Projects = () => {
+  const { theme } = useApp();
 
-  // Minimum swipe distance (px)
-  const minSwipeDistance = 50;
+  // Full project data with original descriptions and highlights
+  const projects = [
+    {
+      id: 0,
+      title: "SMM Booster — Social Media Growth Platform",
+      tagline: "Social Media Growth Platform",
+      description: "A lightweight social media marketing platform built for Nigerian users to purchase Instagram followers, TikTok views, YouTube subscribers and more using Naira payments. The platform includes secure authentication, wallet funding, real-time order tracking, transaction history and automated order processing through integrated SMM APIs. Designed with a strong focus on speed, simplicity and mobile-first usability.",
+      link: "https://smmbooster.com.ng/",
+      highlights: [
+        "Secure authentication and user account management.",
+        "Wallet funding with Flutterwave payments in Naira.",
+        "Real-time order placement and transaction tracking.",
+        "Fast, mobile-first UI optimized for performance and simplicity."
+      ],
+      images: [smmboosterLogin, smmboosterDashbaord, smmboosterTopup, smmboosterOrder],
+      size: "md:col-span-2",
+    },
+    {
+      id: 1,
+      title: "AutoGrow — Smart Earnings Dashboard",
+      tagline: "Smart Earnings Dashboard",
+      description: "AutoGrow is a modern web app that lets users deposit funds and watch their balance grow automatically over time. It features a crypto-style dashboard where users can view deposits, daily/weekly/monthly earnings, and withdrawals — all with a clean, intuitive UI. The system integrates Flutterwave for payments and Firebase for authentication, database, and real-time updates. It also includes a referral system that tracks referred users, counts rewards, and boosts earnings potential.",
+      link: "https://autogrow-alpha.vercel.app/",
+      highlights: [
+        "Automated daily/weekly/monthly earnings updates.",
+        "Secure deposits & withdrawals with Flutterwave + Firebase.",
+        "Full referral tracking system (codes, counts, bonuses, and referral earnings).",
+        "Sleek, crypto-inspired user dashboard with animations & modern UI."
+      ],
+      images: [AutogrowHome, autogrowDashboard, autogrowProfile],
+      size: "md:col-span-1",
+    },
+      {
+      id: 3,
+      title: "School Portal — Student & Admin Management System",
+      tagline: "Student & Admin System",
+      description: "School Portal is a modern academic management system built to simplify how schools handle student information, attendance, results, and communication. Students can log in to access their dashboard, view grades, check announcements, and manage their profile. Admins get a powerful backend with tools for managing users, posting updates, and overseeing school operations. Designed with a clean UI, fast authentication, and a secure data layer, School Portal brings a smooth digital experience to both students and staff.",
+      link: "https://sunshine-academy.vercel.app/",
+      highlights: [
+        "Secure login system with student and admin roles.",
+        "Student dashboard for grades, profile, and announcements.",
+        "Admin dashboard for managing users, results, and updates.",
+        "Real-time database updates with smooth navigation.",
+        "Modern UI built for speed, clarity, and easy use."
+      ],
+      images: [SchoolHome, loginpage, dashboardoverview, mycoursestab],
+      size: "md:col-span-1",
+    },
+      {
+        id: 4,
+        title: "Uplink — Referral Tracking MVP",
+        tagline: "Referral Tracking MVP",
+        description: "Dashboards — one for companies to create/manage campaigns and another for promoters to generate referral links and track their performance. The system captures referrals using URL parameters + cookies, supports signup tracking in addition to checkout tracking, and logs referrals in real time. Companies can review referred leads/sales, while promoters can easily monitor their earnings and progress.",
+        link: "https://earnwithuplink.vercel.app/",
+        highlights: [
+          "Dual dashboards: Company (manage campaigns, approve rewards) & Promoter (track performance).",
+          "Automatic referral + signup tracking with cookies.",
+          "Real-time analytics for referrals and conversions.",
+          "Lightweight setup with no complex integrations needed."
+        ],
+        images: [
+          theme === 'dark' ? uplinkHomeDark : uplinkHomeLight,
+          theme === 'dark' ? companyDashboardDark : companyDashboardLight,
+          theme === 'dark' ? promoterDashboardDark : promoterDashboardLight,
+        ],
+        size: "md:col-span-2",
+      },
+    {
+      id: 5,
+      title: "Offbeats — Offline-First Music App",
+      tagline: "Offline-First Music App",
+      description: "Offbeats is a desktop music player designed to work seamlessly both online and offline. Users can browse and search songs while connected to the internet, then save them for later offline playback. With a clean interface and smooth playback engine, Offbeats offers a balance of convenience and performance, giving users a reliable music experience even without constant connectivity.",
+      link: "https://github.com/prospersamuel/Offbeats-App/releases/tag/v1.0.0",
+      highlights: [
+        "Offline-first design — download & play songs without internet.",
+        "Online mode with search and browse functionality.",
+        "Song caching for smooth playback across sessions.",
+        "Desktop-focused for fast, lightweight performance."
+      ],
+      images: [offbeatsoffline, offbeatsonline],
+      size: "md:col-span-3",
+    },
+  
+  ];
 
-  const nextImage = () => {
-    setCurrentImageIndex((prevIndex) => 
-      prevIndex === project.images.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  const prevImage = () => {
-    setCurrentImageIndex((prevIndex) => 
-      prevIndex === 0 ? project.images.length - 1 : prevIndex - 1
-    );
-  };
-
-  // Get truncated description (first ~150 characters)
-  const getTruncatedDescription = () => {
-    if (project.description.length <= 150) return project.description;
-    return project.description.substring(0, 150) + '...';
-  };
-
-  // Touch handlers for swipe
-  const onTouchStart = (e) => {
-    setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const onTouchMove = (e) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-
-  const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-    
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > minSwipeDistance;
-    const isRightSwipe = distance < -minSwipeDistance;
-
-    if (isLeftSwipe) {
-      nextImage();
-    } else if (isRightSwipe) {
-      prevImage();
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.05, delayChildren: 0.05 }
     }
   };
 
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'ArrowLeft') {
-        prevImage();
-      } else if (e.key === 'ArrowRight') {
-        nextImage();
-      }
-    };
-
-    const carousel = carouselRef.current;
-    if (carousel) {
-      carousel.addEventListener('keydown', handleKeyDown);
-      carousel.setAttribute('tabindex', '0'); // Make it focusable
-    }
-
-    return () => {
-      if (carousel) {
-        carousel.removeEventListener('keydown', handleKeyDown);
-      }
-    };
-  }, [currentImageIndex, project.images.length]);
+  const itemVariants = {
+    hidden: { opacity: 0, y: 15 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } }
+  };
 
   return (
-    <>
-      <div className="flex flex-col gap-8 lg:gap-12">
-        {/* Image Carousel with Swipe Support */}
-        <div 
-          ref={carouselRef}
-          className="w-full relative group outline-none"
-          onTouchStart={onTouchStart}
-          onTouchMove={onTouchMove}
-          onTouchEnd={onTouchEnd}
+    <div className="min-h-screen py-12 px-4 md:px-8 bg-neutral-50 dark:bg-neutral-950">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-12 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-neutral-800 to-neutral-600 dark:from-neutral-100 dark:to-neutral-400 bg-clip-text text-transparent">
+            Featured Projects
+          </h1>
+          <p className="text-neutral-500 dark:text-neutral-400 mt-3 max-w-2xl mx-auto">
+            Real-world applications built with modern tech stacks
+          </p>
+        </div>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr"
         >
-          <div onContextMenu={(e)=>e.preventDefault()} className="relative overflow-hidden rounded-xl lg:rounded-3xl border-2 border-neutral-400 dark:border-neutral-700 shadow-md dark:shadow-none bg-gradient-to-br from-neutral-700 to-neutral-900 h-[20vh] md:h-80 lg:h-[500px]">
-            
-            {/* Image with swipe feedback */}
-            <a href={project.link}
-             target="_blank"
-             rel="noopener noreferrer">
-            <img 
-              src={project.images[currentImageIndex]} 
-              alt={`${project.title} - Image ${currentImageIndex + 1}`}
-              className="w-full h-full object-cover object-center select-none"
-              draggable="false"
-              />
-              </a>
-            
-            {/* Carousel Controls - Visible on desktop, hidden on mobile */}
-            {project.images.length > 1 && (
-              <>
-                {/* Left Button - Hidden on mobile, visible on hover desktop */}
-                <button
-                  onClick={prevImage}
-                  className="hidden lg:flex absolute left-4 top-1/2 transform -translate-y-1/2 border border-neutral-700 bg-black/50 backdrop-blur-sm hover:scale-110 duration-300 transition-all text-neutral-200 rounded-full p-2 items-center justify-center opacity-0 group-hover:opacity-100"
-                  aria-label="Previous image"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
+          {projects.map((project) => (
+            <ProjectCard key={project.id} project={project} variants={itemVariants} />
+          ))}
+        </motion.div>
+      </div>
+    </div>
+  );
+};
 
-                {/* Right Button - Hidden on mobile, visible on hover desktop */}
-                <button
-                  onClick={nextImage}
-                  className="hidden lg:flex absolute right-4 top-1/2 transform -translate-y-1/2 border border-neutral-700 bg-black/50 backdrop-blur-sm hover:scale-110 duration-300 transition-all text-neutral-200 rounded-full p-2 items-center justify-center opacity-0 group-hover:opacity-100"
-                  aria-label="Next image"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </button>
+// Individual card with expand/collapse functionality
+const ProjectCard = ({ project, variants }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
 
-                {/* Mobile Buttons - Always visible on mobile */}
-                <button
-                  onClick={prevImage}
-                  className="lg:hidden absolute left-2 top-1/2 transform -translate-y-1/2 border border-neutral-700 bg-black/50 backdrop-blur-sm text-neutral-200 rounded-full p-2 flex items-center justify-center"
-                  aria-label="Previous image"
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                </button>
+  const truncateDescription = (desc, limit = 120) => {
+    if (desc.length <= limit) return desc;
+    return desc.substring(0, limit) + '...';
+  };
 
-                <button
-                  onClick={nextImage}
-                  className="lg:hidden absolute right-2 top-1/2 transform -translate-y-1/2 border border-neutral-700 bg-black/50 backdrop-blur-sm text-neutral-200 rounded-full p-2 flex items-center justify-center"
-                  aria-label="Next image"
-                >
-                  <ChevronRight className="w-4 h-4" />
-                </button>
-              </>
-            )}
+  return (
+    <motion.div
+      variants={variants}
+      className={`${project.size} bg-white dark:bg-neutral-800/50 backdrop-blur-sm rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden border border-neutral-200 dark:border-neutral-700`}
+    >
+      <div className="p-4 pb-2 bg-gradient-to-b from-neutral-100 to-neutral-200 dark:from-neutral-800 dark:to-neutral-900">
+        <LaptopFrame>
+          <div className="h-[20vh] md:h-80 w-full">
+            <Carousel images={project.images} title={project.title} link={project.link} />
           </div>
-          
-          {/* Carousel Indicators */}
-          {project.images.length > 1 && (
-            <div className="w-[95%] mx-auto mt-3 h-1 flex gap-1 lg:gap-2">
-              {project.images.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentImageIndex(index)}
-                  className={`w-full rounded-full transition-all ${
-                    index === currentImageIndex 
-                      ? 'bg-neutral-600 dark:bg-neutral-200' 
-                      : 'bg-neutral-300 dark:bg-neutral-600'
-                  }`}
-                  aria-label={`Go to image ${index + 1}`}
-                />
-              ))}
-            </div>
+        </LaptopFrame>
+      </div>
+
+      <div className="p-5 flex-1 flex flex-col">
+        <div className="flex justify-between items-start gap-2">
+          <div>
+            <h3 className="text-xl font-bold text-neutral-800 dark:text-white">{project.title}</h3>
+            <p className="text-sm text-indigo-500 dark:text-indigo-400 mt-0.5">{project.tagline}</p>
+          </div>
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-neutral-500 hover:text-neutral-800 dark:hover:text-white transition-colors"
+          >
+            <ExternalLink size={18} />
+          </a>
+        </div>
+
+        {/* Description with expand toggle */}
+        <div className="text-neutral-600 dark:text-neutral-300 text-sm mt-3">
+          {isExpanded ? project.description : truncateDescription(project.description)}
+          {project.description.length > 120 && (
+            <button
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="ml-2 text-indigo-500 dark:text-indigo-400 hover:underline inline-flex items-center gap-1"
+            >
+              {isExpanded ? (
+                <>View Less <ChevronUp size={14} /></>
+              ) : (
+                <>View More <ChevronDown size={14} /></>
+              )}
+            </button>
           )}
         </div>
 
-        {/* Project Content */}
-        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-10 items-start">
-          <motion.h2
-             initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 }}
-                  viewport={{ once: true }}
-           className="text-xl lg:text-3xl dark:text-neutral-200 text-neutral-700 font-bold leading-tight">
-            {project.title}
-          </motion.h2>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            viewport={{ once: true }}
-            className="space-y-4"
-          >
-            {/* Description */}
-            <div className="dark:text-neutral-400 text-sm lg:text-base text-pretty text-neutral-600 leading-relaxed">
-              {isExpanded ? project.description : getTruncatedDescription()}
-              
-              {/* Show "View More" only if description is long enough */}
-              {project.description.length > 150 && (
-                <button
-                  onClick={() => setIsExpanded(!isExpanded)}
-                  className="ml-2 text-neutral-400 hover:text-neutral-600 dark:text-neutral-600 dark:hover:text-neutral-500 font-medium inline-flex items-center gap-1 transition-colors"
-                >
-                  {isExpanded ? (
-                    <>
-                      View Less <ChevronUp className="w-4 h-4" />
-                    </>
-                  ) : (
-                    <>
-                      View More <ChevronDown className="w-4 h-4" />
-                    </>
-                  )}
-                </button>
-              )}
-            </div>
+        {/* Highlights - only when expanded */}
+        {isExpanded && project.highlights && (
+          <div className="mt-4 space-y-2">
+            <h4 className="text-xs font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wide">
+              Key Features
+            </h4>
+            <ul className="space-y-1.5">
+              {project.highlights.map((highlight, idx) => (
+                <li key={idx} className="flex items-start gap-2 text-xs text-neutral-600 dark:text-neutral-300">
+                  <span className="text-indigo-500 mt-0.5">•</span>
+                  <span>{highlight}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
-            {/* Highlights - Only show when expanded and if highlights exist */}
-            {isExpanded && project.highlights && project.highlights.length > 0 && (
-              <div className="space-y-3 mt-6">
-                <h3 className="text-lg font-semibold dark:text-neutral-200 text-neutral-700">
-                  Key Features:
-                </h3>
-                <ul className="space-y-2">
-                  {project.highlights.map((highlight, index) => (
-                    <motion.li
-                      key={index}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="flex items-start gap-3 dark:text-neutral-300 text-neutral-600 text-sm lg:text-base"
-                    >
-                      <span className="text-neutral-500 mt-1 flex-shrink-0">•</span>
-                      <span>{highlight}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </motion.div>
+        <div className="mt-4 flex flex-wrap gap-2">
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs font-medium bg-neutral-100 dark:bg-neutral-700 px-3 py-1.5 rounded-full hover:bg-neutral-200 dark:hover:bg-neutral-600 transition"
+          >
+            Live Demo →
+          </a>
         </div>
       </div>
-      <div className="h-px w-full bg-gradient-to-r from-transparent via-neutral-400 to-transparent dark:via-neutral-700 mt-8 lg:mt-12" />
-    </>
+    </motion.div>
   );
 };
 
