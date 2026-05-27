@@ -235,7 +235,7 @@ export function Hero() {
             >
               {[
                 { number: 12, label: "Projects" },
-                { number: 3, label: "Years" },
+                { number: 4, label: "Years" },
                 { number: 8, label: "Clients" }
               ].map((stat, index) => (
                 <motion.div
