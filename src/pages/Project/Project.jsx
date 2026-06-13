@@ -18,6 +18,12 @@ import smmboosterLogin from '../../assets/Projectimages/SMM-booster/smmbooster-l
 import smmboosterDashbaord from '../../assets/Projectimages/SMM-booster/smmbooster-dashboard.png';
 import smmboosterTopup from '../../assets/Projectimages/SMM-booster/smmbooster-topup.png';
 import smmboosterOrder from '../../assets/Projectimages/SMM-booster/smmbooster-order.png';
+
+import burgerHome from '../../assets/Projectimages/BurgerWebsite/burgerWebsiteHome.png';
+import burgerHome2 from '../../assets/Projectimages/BurgerWebsite/Burgerhome2.png';
+import burgerOrderPage from '../../assets/Projectimages/BurgerWebsite/burgerOrderPage.png';
+import burgercheckout from '../../assets/Projectimages/BurgerWebsite/burgercheckout.png';
+
 import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp, ExternalLink } from 'lucide-react';
 import { useApp } from "../../context/Appcontext";
 import { motion } from 'framer-motion';
@@ -129,10 +135,28 @@ const Projects = () => {
         "Fast, mobile-first UI optimized for performance and simplicity."
       ],
       images: [smmboosterLogin, smmboosterDashbaord, smmboosterTopup, smmboosterOrder],
-      size: "md:col-span-2",
+      status: "sold"
     },
+
+        {
+  id: 1,
+  title: "Burger Ordering Website — Premium Restaurant System",
+  tagline: "Ready-to-sell restaurant ordering system",
+  description:
+    "A high-performance restaurant ordering system designed for burger shops and fast-food brands. Includes menu browsing, cart system, checkout flow, and mobile-first UX optimized for conversions. Built to help restaurants take orders online without relying on WhatsApp or phone calls.",
+  link: "https://burger-website-neon.vercel.app/",
+  highlights: [
+    "Fully responsive online ordering system",
+    "Cart + checkout flow optimized for speed",
+    "Restaurant-ready UI with premium animations",
+    "Can be rebranded for any food business",
+  ],
+  images: [burgerHome, burgerHome2, burgerOrderPage, burgercheckout],
+  status: "Available for purchase",
+},
+
     {
-      id: 1,
+      id: 2,
       title: "AutoGrow — Smart Earnings Dashboard",
       tagline: "Smart Earnings Dashboard",
       description: "AutoGrow is a modern web app that lets users deposit funds and watch their balance grow automatically over time. It features a crypto-style dashboard where users can view deposits, daily/weekly/monthly earnings, and withdrawals — all with a clean, intuitive UI. The system integrates Flutterwave for payments and Firebase for authentication, database, and real-time updates. It also includes a referral system that tracks referred users, counts rewards, and boosts earnings potential.",
@@ -144,7 +168,8 @@ const Projects = () => {
         "Sleek, crypto-inspired user dashboard with animations & modern UI."
       ],
       images: [AutogrowHome, autogrowDashboard, autogrowProfile],
-      size: "md:col-span-1",
+      status: "Available for purchase",
+
     },
       {
       id: 3,
@@ -160,7 +185,7 @@ const Projects = () => {
         "Modern UI built for speed, clarity, and easy use."
       ],
       images: [SchoolHome, loginpage, dashboardoverview, mycoursestab],
-      size: "md:col-span-1",
+      status: "Available for purchase",
     },
       {
         id: 4,
@@ -179,7 +204,7 @@ const Projects = () => {
           theme === 'dark' ? companyDashboardDark : companyDashboardLight,
           theme === 'dark' ? promoterDashboardDark : promoterDashboardLight,
         ],
-        size: "md:col-span-2",
+        status: "Available for purchase"
       },
     {
       id: 5,
@@ -194,7 +219,7 @@ const Projects = () => {
         "Desktop-focused for fast, lightweight performance."
       ],
       images: [offbeatsoffline, offbeatsonline],
-      size: "md:col-span-3",
+      status: "Available for purchase"
     },
   
   ];
@@ -229,7 +254,7 @@ const Projects = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 auto-rows-fr"
         >
           {projects.map((project) => (
             <ProjectCard key={project.id} project={project} variants={itemVariants} />
@@ -313,14 +338,35 @@ const ProjectCard = ({ project, variants }) => {
         )}
 
         <div className="mt-4 flex flex-wrap gap-2">
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs font-medium bg-neutral-100 dark:bg-neutral-700 px-3 py-1.5 rounded-full hover:bg-neutral-200 dark:hover:bg-neutral-600 transition"
-          >
-            Live Demo →
-          </a>
+          {project.status === "Available for purchase" ? (
+            <div className='flex justify-between w-full items-center gap-2'>
+  <a
+    href={project.link}
+    target="_blank"
+    className="text-xs font-medium bg-green-600 text-white px-3 py-1.5 rounded-full hover:bg-green-700 transition"
+  >
+    View Product →
+  </a>
+
+  <div className='text-xs font-semibold px-2 py-1 rounded-full bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'>
+    Avalaible for pickup
+  </div>
+  </div>
+) : (
+  <a
+    href={project.link}
+    target="_blank"
+    className="text-xs font-medium bg-neutral-100 dark:bg-neutral-700 px-3 py-1.5 rounded-full hover:bg-neutral-200 dark:hover:bg-neutral-600 transition"
+  >
+    Live Demo →
+  </a>
+)}
+
+{project.status === "sold" && (
+  <span className="text-xs font-semibold px-2 py-1 rounded-full bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300">
+    Sold
+  </span>
+)}
         </div>
       </div>
     </motion.div>
