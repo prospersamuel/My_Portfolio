@@ -24,7 +24,6 @@ import burgerHome2 from '../../assets/Projectimages/BurgerWebsite/Burgerhome2.pn
 import burgerOrderPage from '../../assets/Projectimages/BurgerWebsite/burgerOrderPage.png';
 import burgercheckout from '../../assets/Projectimages/BurgerWebsite/burgercheckout.png';
 
-
 import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp, ExternalLink } from 'lucide-react';
 import { useApp } from "../../context/Appcontext";
 import { motion } from 'framer-motion';
