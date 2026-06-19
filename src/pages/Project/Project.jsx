@@ -20,7 +20,7 @@ import smmboosterTopup from '../../assets/Projectimages/SMM-booster/smmbooster-t
 import smmboosterOrder from '../../assets/Projectimages/SMM-booster/smmbooster-order.png';
 
 import burgerHome from '../../assets/Projectimages/BurgerWebsite/burgerWebsiteHome.png';
-import burgerHome2 from '../../assets/Projectimages/BurgerWebsite/burgerhome2.png';
+import burgerHome2 from '../../assets/Projectimages/BurgerWebsite/burgerhomesecond.png';
 import burgerOrderPage from '../../assets/Projectimages/BurgerWebsite/burgerOrderPage.png';
 import burgercheckout from '../../assets/Projectimages/BurgerWebsite/burgercheckout.png';
 
