@@ -23,10 +23,10 @@ import smmboosterDashbaord from '../../assets/Projectimages/SMM-booster/smmboost
 import smmboosterTopup from '../../assets/Projectimages/SMM-booster/smmbooster-topup.png';
 import smmboosterOrder from '../../assets/Projectimages/SMM-booster/smmbooster-order.png';
 
-// import burgerHome from '../../assets/Projectimages/BurgerWebsite/burger-website-home.png';
-// import burgerHome2 from '../../assets/Projectimages/BurgerWebsite/burgerhomesecond.png';
-// import burgerOrderPage from '../../assets/Projectimages/BurgerWebsite/burger-order-page.png';
-// import burgercheckout from '../../assets/Projectimages/BurgerWebsite/burgercheckout.png';
+import burgerHome from '../../assets/Projectimages/BurgerWebsite/burger-website-home.png';
+import burgerHome2 from '../../assets/Projectimages/BurgerWebsite/burgerhomesecond.png';
+import burgerOrderPage from '../../assets/Projectimages/BurgerWebsite/burger-order-page.png';
+import burgercheckout from '../../assets/Projectimages/BurgerWebsite/burgercheckout.png';
 
 import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp, ExternalLink } from 'lucide-react';
 import { useApp } from "../../context/Appcontext";
@@ -142,22 +142,22 @@ const Projects = () => {
       status: "sold"
     },
 
-//         {
-//   id: 1,
-//   title: "Burger Ordering Website — Premium Restaurant System",
-//   tagline: "Ready-to-sell restaurant ordering system",
-//   description:
-//     "A high-performance restaurant ordering system designed for burger shops and fast-food brands. Includes menu browsing, cart system, checkout flow, and mobile-first UX optimized for conversions. Built to help restaurants take orders online without relying on WhatsApp or phone calls.",
-//   link: "https://burger-website-neon.vercel.app/",
-//   highlights: [
-//     "Fully responsive online ordering system",
-//     "Cart + checkout flow optimized for speed",
-//     "Restaurant-ready UI with premium animations",
-//     "Can be rebranded for any food business",
-//   ],
-//   images: [burgerHome, burgerHome2, burgerOrderPage, burgercheckout],
-//   status: "Available for purchase",
-// },
+        {
+  id: 1,
+  title: "Burger Ordering Website — Premium Restaurant System",
+  tagline: "Ready-to-sell restaurant ordering system",
+  description:
+    "A high-performance restaurant ordering system designed for burger shops and fast-food brands. Includes menu browsing, cart system, checkout flow, and mobile-first UX optimized for conversions. Built to help restaurants take orders online without relying on WhatsApp or phone calls.",
+  link: "https://burger-website-neon.vercel.app/",
+  highlights: [
+    "Fully responsive online ordering system",
+    "Cart + checkout flow optimized for speed",
+    "Restaurant-ready UI with premium animations",
+    "Can be rebranded for any food business",
+  ],
+  images: [burgerHome, burgerHome2, burgerOrderPage, burgercheckout],
+  status: "Available for purchase",
+},
 
     {
       id: 2,
