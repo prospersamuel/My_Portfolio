@@ -24,7 +24,7 @@ import smmboosterTopup from '../../assets/Projectimages/SMM-booster/smmbooster-t
 import smmboosterOrder from '../../assets/Projectimages/SMM-booster/smmbooster-order.png';
 
 // import burgerHome from '../../assets/Projectimages/BurgerWebsite/burger-website-home.png';
-import burgerHome2 from '../../assets/Projectimages/BurgerWebsite/burgerhomesecond.png';
+// import burgerHome2 from '../../assets/Projectimages/BurgerWebsite/burgerhomesecond.png';
 import burgerOrderPage from '../../assets/Projectimages/BurgerWebsite/burger-order-page.png';
 import burgercheckout from '../../assets/Projectimages/BurgerWebsite/burgercheckout.png';
 
@@ -155,7 +155,7 @@ const Projects = () => {
     "Restaurant-ready UI with premium animations",
     "Can be rebranded for any food business",
   ],
-  images: [ burgerHome2, burgerOrderPage, burgercheckout],
+  images: [ burgerOrderPage, burgercheckout],
   status: "Available for purchase",
 },
 
