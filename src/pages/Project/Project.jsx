@@ -23,10 +23,10 @@ import smmboosterDashbaord from '../../assets/Projectimages/SMM-booster/smmboost
 import smmboosterTopup from '../../assets/Projectimages/SMM-booster/smmbooster-topup.png';
 import smmboosterOrder from '../../assets/Projectimages/SMM-booster/smmbooster-order.png';
 
-// import burgerHome from '../../assets/Projectimages/BurgerWebsite/burger-website-home.png';
-// import burgerHome2 from '../../assets/Projectimages/BurgerWebsite/burgerhomesecond.png';
-import burgerOrderPage from '../../assets/Projectimages/BurgerWebsite/burger-order-page.png';
-import burgercheckout from '../../assets/Projectimages/BurgerWebsite/burgercheckout.png';
+import burgerHome from '../../assets/Projectimages/BurgerWebsite/home';
+import burgerHomeSecond from '../../assets/Projectimages/BurgerWebsite/homesecond.png';
+import burgerOrderPage from '../../assets/Projectimages/BurgerWebsite/order.png';
+import burgercheckout from '../../assets/Projectimages/BurgerWebsite/checkout.png';
 
 import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp, ExternalLink } from 'lucide-react';
 import { useApp } from "../../context/Appcontext";
@@ -155,7 +155,7 @@ const Projects = () => {
     "Restaurant-ready UI with premium animations",
     "Can be rebranded for any food business",
   ],
-  images: [ burgerOrderPage, burgercheckout],
+  images: [burgerHome, burgerHomeSecond, burgerOrderPage, burgercheckout],
   status: "Available for purchase",
 },
 
