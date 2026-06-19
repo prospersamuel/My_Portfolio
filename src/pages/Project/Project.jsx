@@ -5,23 +5,27 @@ import companyDashboardDark from '../../assets/Projectimages/Uplink/companyDashb
 import companyDashboardLight from '../../assets/Projectimages/Uplink/companyDashboardLight.png';
 import promoterDashboardDark from '../../assets/Projectimages/Uplink/promoterDashboardDark.png';
 import promoterDashboardLight from '../../assets/Projectimages/Uplink/promoterDashboardLight.png';
+
 import AutogrowHome from '../../assets/Projectimages/Autogrow/autogrowHome.png';
 import autogrowDashboard from '../../assets/Projectimages/Autogrow/autogrowDashboard.png';
 import autogrowProfile from '../../assets/Projectimages/Autogrow/autogrowProfile.png';
+
 import offbeatsoffline from '../../assets/Projectimages/Offbeats/offbeatsoffline.png';
 import offbeatsonline from '../../assets/Projectimages/Offbeats/offbeatsonline.png';
+
 import dashboardoverview from '../../assets/Projectimages/SchoolWebsite/dashboardoverview.png';
 import SchoolHome from '../../assets/Projectimages/SchoolWebsite/home.png';
 import loginpage from '../../assets/Projectimages/SchoolWebsite/loginpage.png';
 import mycoursestab from '../../assets/Projectimages/SchoolWebsite/mycoursestab.png';
+
 import smmboosterLogin from '../../assets/Projectimages/SMM-booster/smmbooster-login.png';
 import smmboosterDashbaord from '../../assets/Projectimages/SMM-booster/smmbooster-dashboard.png';
 import smmboosterTopup from '../../assets/Projectimages/SMM-booster/smmbooster-topup.png';
 import smmboosterOrder from '../../assets/Projectimages/SMM-booster/smmbooster-order.png';
 
-import burgerHome from '../../assets/Projectimages/BurgerWebsite/burgerWebsiteHome.png';
+import burgerHome from '../../assets/Projectimages/BurgerWebsite/burger-website-home.png';
 import burgerHome2 from '../../assets/Projectimages/BurgerWebsite/burgerhomesecond.png';
-import burgerOrderPage from '../../assets/Projectimages/BurgerWebsite/burgerOrderPage.png';
+import burgerOrderPage from '../../assets/Projectimages/BurgerWebsite/burger-order-page.png';
 import burgercheckout from '../../assets/Projectimages/BurgerWebsite/burgercheckout.png';
 
 import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp, ExternalLink } from 'lucide-react';
