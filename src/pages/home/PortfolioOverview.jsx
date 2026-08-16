@@ -141,7 +141,7 @@ export const PortfolioOverview = () => {
                   {[
                     {
                       icon: Laptop,
-                      title: "Web Development",
+                      title: "Web & App Development",
                       desc: "Custom websites using WordPress or code and mobile applications tailored to your needs.",
                     },
                     {

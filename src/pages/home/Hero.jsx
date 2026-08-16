@@ -1,10 +1,10 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Github, Instagram } from "lucide-react";
+import { Github, Instagram, Linkedin } from "lucide-react";
 import BlurText from "../../components/BlurText";
 import TextType from "../../components/TextType";
 import CountUp from "../../components/Countup";
-import { SiX } from "react-icons/si";
+import { SiUpwork, SiX } from "react-icons/si";
 import medark from "../../assets/medark.png";
 import melight from "../../assets/melight.png";
 import { useApp } from "../../context/Appcontext";
@@ -23,7 +23,7 @@ export function Hero() {
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
-        duration: 0.4
+        duration: 0.3
       }
     }
   };
@@ -34,7 +34,7 @@ export function Hero() {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.5,
+        duration: 0.3,
         ease: "easeOut"
       }
     }
@@ -46,7 +46,7 @@ export function Hero() {
       opacity: 1,
       scale: 1,
       transition: {
-        duration: 0.6,
+        duration: 0.5,
         ease: "easeOut"
       }
     },
@@ -54,7 +54,7 @@ export function Hero() {
       y: -5,
       scale: 1.02,
       transition: {
-        duration: 0.2
+        duration: 0.1
       }
     }
   };
@@ -131,41 +131,24 @@ export function Hero() {
           </motion.div>
 
           {/* Social Links */}
-          <motion.div 
-            className="flex justify-center lg:justify-start gap-4 pt-2"
-            variants={itemVariants}
-          >
-            <a
-              href="https://github.com/prospersamuel"
+          <div className="flex justify-center items-center lg:justify-start gap-4 pt-2">
+          {[
+            {icon: <Github size={20} className="text-neutral-700 dark:text-neutral-300"/>, link: 'https://github.com/prospersamuel'},
+            {icon: <SiX size={20} className="text-neutral-700 dark:text-neutral-300"/>, link: 'https://x.com/ProsperSam35123'},
+            {icon: <Linkedin size={20} className="text-neutral-700 dark:text-neutral-300"/>, link: 'https://www.linkedin.com/in/prosper-samuel-433445332/'},
+            {icon: <SiUpwork size={20} className="text-neutral-700 dark:text-neutral-300"/>, link: 'https://www.upwork.com/freelancers/~012c01bb2ced10ae78?mp_source=share'}
+          ].map((links)=>(
+            <motion.div className="flex justify-center lg:justify-start" variants={itemVariants}>
+               <a
+              href={links.link}
               target="_blank"
               className="p-2 rounded-full border border-neutral-100 dark:border-neutral-700 bg-neutral-100 shadow-md dark:bg-gradient-to-br from-neutral-700 to-neutral-900 dark:from-neutral-600 dark:to-neutral-900 hover:scale-110 duration-200 transition"
             >
-              <Github
-                size={20}
-                className="text-neutral-700 dark:text-neutral-300"
-              />
+              {links.icon}
             </a>
-            <a
-              href="https://www.instagram.com/prosper_samuel55/"
-              target="_blank"
-              className="p-2 rounded-full border border-neutral-100 dark:border-neutral-700 bg-neutral-100 shadow-md dark:bg-gradient-to-br from-neutral-700 to-neutral-900 dark:from-neutral-600 dark:to-neutral-900 hover:scale-110 duration-200 transition"
-            >
-              <Instagram
-                size={20}
-                className="text-neutral-700 dark:text-neutral-300"
-              />
-            </a>
-            <a
-              href="https://x.com/ProsperSam35123"
-              target="_blank"
-              className="p-2 rounded-full border border-neutral-100 dark:border-neutral-700 bg-neutral-100 shadow-md dark:bg-gradient-to-br from-neutral-700 to-neutral-900 dark:from-neutral-600 dark:to-neutral-900 hover:scale-110 duration-200 transition"
-            >
-              <SiX
-                size={20}
-                className="text-neutral-700 dark:text-neutral-300"
-              />
-            </a>
-          </motion.div>
+            </motion.div>
+          ))}
+          </div>
         </motion.div>
 
         <motion.div className="block lg:hidden" variants={itemVariants}>
@@ -217,7 +200,7 @@ export function Hero() {
               className="flex justify-center gap-2"
               variants={containerVariants}
             >
-              {["React", "Node.js", "Python", "Flutter"].map((tech, index) => (
+              {["React", "Node.js", "Superbase", "React Native"].map((tech, index) => (
                 <motion.span
                   key={tech}
                   variants={itemVariants}

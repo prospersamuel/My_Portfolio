@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { Calendar, ChevronRight, Earth } from "lucide-react";
+import { Calendar, ChevronRight, Earth, Linkedin } from "lucide-react";
 import medark from "../../assets/medark.png";
 import melight from "../../assets/melight.png";
 import BlurText from "../../components/BlurText";
@@ -181,6 +181,11 @@ export default function Profile() {
                   link: "https://github.com/prospersamuel",
                 },
                 {
+                  name: "LinkedIn",
+                  icon: <Linkedin className="size-4" />,
+                  link: "https://github.com/prospersamuel",
+                },
+                {
                   name: "Twitter",
                   icon: <SiX />,
                   link: "https://x.com/ProsperSam35123",
@@ -253,7 +258,7 @@ export default function Profile() {
             </p>
             <ul className="list-disc  space-y-2 text-neutral-600 dark:text-neutral-400 text-sm">
               {[
-                "Built a crypto-style dashboard with live balance growth, deposits, and withdrawals using Firebase.",
+                "Built and is managing a live Nigerian SMM platform for boosting followers, likes and various services on different platforms like tiktok with secure payment integration and live orders tracking.",
                 "Designed and developed a referral tracking MVP for eCommerce websites without user signups.",
                 "Integrated payment verification and webhook handling with Flutterwave for seamless transactions.",
               ].map((exp, i) => (
@@ -312,7 +317,7 @@ export default function Profile() {
           >
             <h2 className="text-2xl font-bold mb-4">Technical Skills</h2>
             <p className="text-neutral-600 dark:text-neutral-400 text-sm">
-              React, Tailwind, Firebase, Node.js, Python, Flutter, WordPress,
+              React, Tailwind, Firebase, Node.js, Python, React Native, WordPress,
               Git. I also focus on design systems, authentication flows, AI
               chatbots, referral systems, and payment integrations.
             </p>
