@@ -158,25 +158,8 @@ const Projects = () => {
   images: [burgerHome, burgerHomeSecond, burgerOrderPage, burgercheckout],
   status: "Available for purchase",
 },
-
-    {
-      id: 2,
-      title: "AutoGrow — Smart Earnings Dashboard",
-      tagline: "Smart Earnings Dashboard",
-      description: "AutoGrow is a modern web app that lets users deposit funds and watch their balance grow automatically over time. It features a crypto-style dashboard where users can view deposits, daily/weekly/monthly earnings, and withdrawals — all with a clean, intuitive UI. The system integrates Flutterwave for payments and Firebase for authentication, database, and real-time updates. It also includes a referral system that tracks referred users, counts rewards, and boosts earnings potential.",
-      link: "https://autogrow-alpha.vercel.app/",
-      highlights: [
-        "Automated daily/weekly/monthly earnings updates.",
-        "Secure deposits & withdrawals with Flutterwave + Firebase.",
-        "Full referral tracking system (codes, counts, bonuses, and referral earnings).",
-        "Sleek, crypto-inspired user dashboard with animations & modern UI."
-      ],
-      images: [AutogrowHome, autogrowDashboard, autogrowProfile],
-      status: "Available for purchase",
-
-    },
       {
-      id: 3,
+      id: 2,
       title: "School Portal — Student & Admin Management System",
       tagline: "Student & Admin System",
       description: "School Portal is a modern academic management system built to simplify how schools handle student information, attendance, results, and communication. Students can log in to access their dashboard, view grades, check announcements, and manage their profile. Admins get a powerful backend with tools for managing users, posting updates, and overseeing school operations. Designed with a clean UI, fast authentication, and a secure data layer, School Portal brings a smooth digital experience to both students and staff.",
@@ -192,7 +175,7 @@ const Projects = () => {
       status: "Available for purchase",
     },
       {
-        id: 4,
+        id: 3,
         title: "Uplink — Referral Tracking MVP",
         tagline: "Referral Tracking MVP",
         description: "Dashboards — one for companies to create/manage campaigns and another for promoters to generate referral links and track their performance. The system captures referrals using URL parameters + cookies, supports signup tracking in addition to checkout tracking, and logs referrals in real time. Companies can review referred leads/sales, while promoters can easily monitor their earnings and progress.",
@@ -211,7 +194,7 @@ const Projects = () => {
         status: "Available for purchase"
       },
     {
-      id: 5,
+      id: 4,
       title: "Offbeats — Offline-First Music App",
       tagline: "Offline-First Music App",
       description: "Offbeats is a desktop music player designed to work seamlessly both online and offline. Users can browse and search songs while connected to the internet, then save them for later offline playback. With a clean interface and smooth playback engine, Offbeats offers a balance of convenience and performance, giving users a reliable music experience even without constant connectivity.",
