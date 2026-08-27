@@ -6,10 +6,6 @@ import companyDashboardLight from '../../assets/Projectimages/Uplink/companyDash
 import promoterDashboardDark from '../../assets/Projectimages/Uplink/promoterDashboardDark.png';
 import promoterDashboardLight from '../../assets/Projectimages/Uplink/promoterDashboardLight.png';
 
-import AutogrowHome from '../../assets/Projectimages/Autogrow/autogrowHome.png';
-import autogrowDashboard from '../../assets/Projectimages/Autogrow/autogrowDashboard.png';
-import autogrowProfile from '../../assets/Projectimages/Autogrow/autogrowProfile.png';
-
 import offbeatsoffline from '../../assets/Projectimages/Offbeats/offbeatsoffline.png';
 import offbeatsonline from '../../assets/Projectimages/Offbeats/offbeatsonline.png';
 
